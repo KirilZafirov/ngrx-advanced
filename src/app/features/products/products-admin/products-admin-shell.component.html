@@ -1,0 +1,42 @@
+<div class="row">
+  
+
+
+<div class="col-md-12">
+    <button mat-raised-button color="primary" [routerLink]="addLink">Add Product</button> 
+</div>
+<div class="col-md-8">
+
+  <ng-container *ngIf="(this.products$ | async) as products">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="row" *ngFor="let product of products">
+            <div class="col-md-10">
+              <div class="row"  [routerLink]="product.id">
+                <div class="col-md-4">
+                  {{product.name}}
+                </div>
+                <div class="col-md-2">
+                  {{product.price}}
+                </div>
+                <div class="col-md-4">
+                  {{product.description}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button mat-raised-button type="button" color="warn" (click)="removeItem(product)">remove</button>
+              <!-- <button mat-raised-button color="accent">Accent</button>
+              <button mat-raised-button color="warn">Warn</button> -->
+            </div>
+         
+          </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="col-md-4">
+  <router-outlet></router-outlet>
+</div>
+</div>
