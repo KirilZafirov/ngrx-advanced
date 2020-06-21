@@ -1,15 +1,14 @@
-import { Product } from './../services/products-data.service';
-import { SearchParams } from '../../../models/search-params.model';
+import { ProductsPageActions } from 'src/app/features/products/products-admin/actions';
 
-import { Observable, Subject } from 'rxjs';
-import { ProductsService} from '../services/products-data.service';
 import { Component } from '@angular/core';
 import { tap, take, map, mergeMap, takeUntil } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActionTypeEnum } from 'src/app/models/action-type.model';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ProductSearchParams } from '../../models/product-search-params.model';
-
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ProductSearchParams } from 'src/app/features/models/product-search-params.model';
+import { Subject } from 'rxjs';
+import { ProductsService, Product } from '../../services/products-data.service';
+import { Store } from '@ngrx/store';
+import * as fromRoot from "src/app/shared/state";
 @Component({
   templateUrl: './product-admin-details.component.html'
 })
@@ -20,9 +19,13 @@ export class ProductAdminDetailsComponent {
   destroy$ = new Subject();
   form: FormGroup;
 
+  currencyType = CURRENCY_TYPE;
+
   constructor(private productsService: ProductsService,
+    private store: Store<fromRoot.State>,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
       this.route.paramMap.pipe(
         map((params: ParamMap) => {
           this.searchParams.id = params.get('productId');
@@ -30,17 +33,20 @@ export class ProductAdminDetailsComponent {
         }),
         mergeMap((searchParams: ProductSearchParams) => 
                   this.productsService.getDataById(searchParams.id)),
-        tap((product) => this.form = this.initForm(product)),
+        tap((product) => {
+          this.form = this.initForm(product);
+          this.selected =  product.currencyType
+        }),
         takeUntil(this.destroy$)
       ).subscribe((product) => {
         
       });
   }
 
-
+  selected: string;
   ngOnInit(): void {
 
-    
+  
   }
 
   initForm(product?: Product) {
@@ -48,6 +54,7 @@ export class ProductAdminDetailsComponent {
       name: [product.name ? product.name : null, [Validators.required]],
       description: [product.description ? product.description : null, [Validators.required]],
       price: [product.price ? product.price : null, [Validators.required]],
+      currencyType: [product.currencyType ? product.currencyType : null, [Validators.required]],
     })
   }
   
@@ -59,15 +66,15 @@ export class ProductAdminDetailsComponent {
       id: this.searchParams.id
     }
 
-    return this.productsService.update(requestBody).pipe(
-      take(1)
-    )
-      .subscribe()
+    this.store.dispatch(
+      ProductsPageActions.updateProduct({productId: this.searchParams.id , product: requestBody})
+    );
   }
  
 
   clear() {
-
+    this.store.dispatch(ProductsPageActions.clearSelectedProduct());
+    this.router.navigateByUrl('/products');
   }
 
   ngOnDestroy(): void {
@@ -76,3 +83,18 @@ export class ProductAdminDetailsComponent {
   }
 
 }
+
+
+export const CURRENCY_TYPE  =
+    [{
+        display: '£GBP',
+        value: 'GBP'
+    },
+    {
+        display: '$USD',
+        value: 'USD'
+    },
+    {
+        display: '€EUR',
+        value: 'EUR'
+    }]

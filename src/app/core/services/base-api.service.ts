@@ -44,26 +44,31 @@ export class BaseApiService<T> implements OnDestroy {
     return this.http.get<T>(requestUrl , ({ params })); 
   }
 
-  save(endPointUrl , requestBody: any): Observable<BaseResponse<string>> {
-    requestBody.id = this.create_UUID();
+  save(endPointUrl , requestBody: T){
+    // requestBody.id = this.create_UUID();
+    const params: T = {
+      id: this.create_UUID(),
+      ...requestBody
+    };
+
     const requestUrl = `${this.baseUrl}${endPointUrl}/`; 
-    return this.http.post<BaseResponse<string>>(requestUrl , requestBody).pipe(
+    return this.http.post(requestUrl , params).pipe(
       tap(() => this.notificationService.success('Saved successfully'))
     );
   }
 
-  update(endPointUrl , id: string, requestBody: any): Observable<BaseResponse<string>> {
+  update(endPointUrl , id: string, requestBody: T) {
  
     const requestUrl = `${this.baseUrl}${endPointUrl}/${id}`; 
-    return this.http.put<BaseResponse<string>>(requestUrl , requestBody).pipe(
+    return this.http.put(requestUrl , requestBody).pipe(
       tap(() => this.notificationService.success('Updated successfully'))
     );
   }
  
-  delete(endPointUrl , id: string): Observable<any> {
+  delete(endPointUrl , id: string) {
  
     const requestUrl = `${this.baseUrl}${endPointUrl}/${id}`; 
-    return this.http.delete<any>(requestUrl).pipe(
+    return this.http.delete(requestUrl).pipe(
       tap(() => this.notificationService.success('Item removed'))
     );
   }

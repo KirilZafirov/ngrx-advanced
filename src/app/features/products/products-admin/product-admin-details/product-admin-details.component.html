@@ -15,6 +15,27 @@
           <textarea matInput placeholder="Description" formControlName="description"></textarea>
         </mat-form-field>
       </div>  
+
+      <div class="col-md-8"> 
+        <label for="currency_type_for_partnership">Currency Type</label> 
+        <select id="currency_type_for_partnership" 
+                class="form-control" 
+                [ngClass]="form.get('currencyType').hasError('required') &&
+                            form.get('currencyType').touched ? 'has-error': ''"
+                formControlName="currencyType">
+          <option *ngFor="let option of currencyType" 
+                  [value]="option.value"
+                  [title]="option.display"
+                  [selected]="selected === option.value">
+            
+                {{option.display}} 
+          </option> 
+        </select> 
+        <small class="form-text text-muted" *ngIf="form.get('currencyType').hasError('required') && form.get('currencyType').touched">
+          <mat-error>Information is required. Please complete this field</mat-error>
+        </small> 
+    </div> 
+
     <div class="col-md-12">
       <button mat-button type="submit" class="primary add-edit-btn"
         [disabled]="form.invalid && !form.dirty">Update</button>

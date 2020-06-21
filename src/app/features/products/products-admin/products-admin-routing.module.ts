@@ -2,6 +2,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductsAdminShellComponent } from './products-admin-shell.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ProductAdminDetailsComponent } from './product-admin-details/product-admin-details.component';
 
 
 const routes: Routes = [
@@ -11,11 +13,11 @@ const routes: Routes = [
     children: [
       {
         path:'add-product',
-        loadChildren: () => import('../add-product/add-product.module').then(m=> m.AddProductModule)
+        component: AddProductComponent
       },
       {
         path:':productId',
-        loadChildren: () => import('../product-admin-details/product-admin-details.module').then(m=> m.ProductAdminDetailsModule)
+        component: ProductAdminDetailsComponent
       },
     ]
   },

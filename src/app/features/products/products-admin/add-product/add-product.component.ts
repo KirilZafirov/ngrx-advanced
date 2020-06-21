@@ -1,8 +1,9 @@
-
-import { ProductsService} from '../services/products-data.service';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { take} from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/shared/state';
+import { ProductsPageActions } from '../actions';
 
 @Component({
   templateUrl: './add-product.component.html'
@@ -11,8 +12,9 @@ export class AddProductComponent {
    
   form: FormGroup;
 
-  constructor(private productsService: ProductsService,
-    private formBuilder: FormBuilder) {
+  constructor(private store: Store<State>,
+    private formBuilder: FormBuilder,
+    private router: Router) {
      this.form = this.initForm();
   }
 
@@ -34,13 +36,12 @@ export class AddProductComponent {
     const requestBody = {
       ...value,
     }
-
-    return this.productsService.save(requestBody).pipe(
-      take(1)
-    ).subscribe()
+    
+    this.store.dispatch(ProductsPageActions.createProduct({product: requestBody}));
   }
   
   clear() {
-
+    this.store.dispatch(ProductsPageActions.clearSelectedProduct());
+    this.router.navigateByUrl('/products');
   } 
 }
