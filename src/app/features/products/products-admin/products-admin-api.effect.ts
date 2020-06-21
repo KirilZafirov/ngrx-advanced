@@ -1,10 +1,9 @@
-import { productCreated } from './actions/products-api.actions';
+
 import { Injectable } from "@angular/core";
-import { Actions, ofType, createEffect, Effect } from '@ngrx/effects';
+import { Actions, ofType, Effect } from '@ngrx/effects';
 import { ProductsService } from '../services/products-data.service';
-import { exhaustMap, map, mergeMap, catchError, concatMap} from 'rxjs/operators';
+import { exhaustMap, map, mergeMap, concatMap} from 'rxjs/operators';
 import { ProductsPageActions, ProductsApiActions } from './actions';
-import { EMPTY } from 'rxjs';
 
 @Injectable()
 export class ProductsAdminEffects {
@@ -19,6 +18,17 @@ export class ProductsAdminEffects {
       exhaustMap((action) =>
         this.productsService.getData(action.searchParams).pipe(
           map(products => ProductsApiActions.productsLoaded({ products })),
+        //   catchError(() => EMPTY)
+        )
+      )
+    );
+
+    @Effect()
+    loadProduct$ = this.actions$.pipe(
+      ofType(ProductsPageActions.selectProduct),
+      exhaustMap((action) =>
+        this.productsService.getDataById(action.productId).pipe(
+          map(product => ProductsApiActions.productLoaded({ product })),
         //   catchError(() => EMPTY)
         )
       )

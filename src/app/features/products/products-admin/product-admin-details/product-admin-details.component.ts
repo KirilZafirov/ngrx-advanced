@@ -1,11 +1,13 @@
+import { selectProduct } from './../actions/products-page.actions';
+import { selectProductDetails, selectActiveProductId } from './../../../../shared/state/products.reducer';
 import { ProductsPageActions } from 'src/app/features/products/products-admin/actions';
 
 import { Component } from '@angular/core';
-import { tap, take, map, mergeMap, takeUntil } from 'rxjs/operators';
+import { tap, take, map, mergeMap, takeUntil, filter } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductSearchParams } from 'src/app/features/models/product-search-params.model';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { ProductsService, Product } from '../../services/products-data.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from "src/app/shared/state";
@@ -18,7 +20,6 @@ export class ProductAdminDetailsComponent {
   };  
   destroy$ = new Subject();
   form: FormGroup;
-
   currencyType = CURRENCY_TYPE;
 
   constructor(private productsService: ProductsService,
@@ -26,16 +27,18 @@ export class ProductAdminDetailsComponent {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router) {
+      this.store.select(fromRoot.selectProductDetails).pipe(
+        filter(p => !!p)
+      ).subscribe( product => {
+        this.form = this.initForm(product);
+        this.selected =  product.currencyType
+      });
+
       this.route.paramMap.pipe(
-        map((params: ParamMap) => {
+        tap((params: ParamMap) => {
           this.searchParams.id = params.get('productId');
+          this.store.dispatch(ProductsPageActions.selectProduct({productId: this.searchParams.id}))
           return this.searchParams
-        }),
-        mergeMap((searchParams: ProductSearchParams) => 
-                  this.productsService.getDataById(searchParams.id)),
-        tap((product) => {
-          this.form = this.initForm(product);
-          this.selected =  product.currencyType
         }),
         takeUntil(this.destroy$)
       ).subscribe((product) => {

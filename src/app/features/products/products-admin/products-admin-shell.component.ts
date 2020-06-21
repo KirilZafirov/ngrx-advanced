@@ -23,7 +23,7 @@ export class ProductsAdminShellComponent {
 
   constructor(private store: Store<fromRoot.State>,
               private route: ActivatedRoute) {
-      this.products$ = this.store.pipe(select(fromRoot.selectAllProducts));
+      this.products$ = this.store.select(fromRoot.selectAllProducts);
   }
 
 
@@ -39,7 +39,7 @@ export class ProductsAdminShellComponent {
     this.store.dispatch(ProductsPageActions.deleteProduct({ productId: item.id}));
   }
  
-  setActiveItem(item: Product) {
-    this.store.dispatch(ProductsPageActions.selectProduct({productId: item.id}));
-  }
+  // setActiveItem(item: Product) {
+  //   // this.store.dispatch(ProductsPageActions.selectProduct({productId: item.id}));
+  // }
 }

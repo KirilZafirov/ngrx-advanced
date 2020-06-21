@@ -18,6 +18,8 @@ export const metaReducers: MetaReducer<State>[] = [];
 
  export const selectProductsState = (state: State) => state.products;
 
+ export const selectProductDetails = (state: State) => state.products.productDetails;
+
  export const selectAllProducts = createSelector(
     selectProductsState,
     fromProducts.selectAll

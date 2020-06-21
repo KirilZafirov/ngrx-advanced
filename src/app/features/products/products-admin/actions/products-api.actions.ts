@@ -6,6 +6,11 @@ export const productsLoaded = createAction(
     props<{ products: Product[]}>()
 );
 
+export const productLoaded = createAction(
+    "[Products API] Product Loaded Success",
+    props<{ product: Product}>()
+);
+
 export const productCreated = createAction(
     "[Products API] Product Created",
     props<{ product: Product}>()

@@ -1,4 +1,3 @@
-
 import { Product } from './../../features/products/services/products-data.service';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, Action, createSelector, on } from '@ngrx/store';
@@ -11,13 +10,15 @@ export const adapter = createEntityAdapter({
 
 export interface State extends EntityState<Product> {
     activeProductId: string | null,
-    products:Product[]
+    products:Product[],
+    productDetails: Product ,
 }
 
 
 export const initialState: State = adapter.getInitialState({
     activeProductId: null,
-    products: []
+    products: [],
+    productDetails: null
 });
 
 
@@ -33,6 +34,13 @@ export const productsReducer = createReducer(
       return {
         ...state,
         activeProductId: action.productId
+      };
+    }),
+    on(ProductsApiActions.productLoaded, (state, action) => {
+      return {
+        ...state,
+        activeProductId: action.product.id,
+        productDetails: action.product
       };
     }),
     on(ProductsApiActions.productsLoaded, (state, action) => {
@@ -64,6 +72,7 @@ export function reducer( state: State | undefined , action: Action) {
 
 export const { selectAll , selectEntities } = adapter.getSelectors();
 export const selectActiveProductId = (state: State) => state.activeProductId;
+
 export const selectActiveProduct = createSelector(
     selectEntities,
     selectActiveProductId,
