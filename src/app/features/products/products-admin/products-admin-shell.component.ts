@@ -3,7 +3,7 @@ import { ProductSearchParams } from './../../models/product-search-params.model'
 import { Observable } from 'rxjs';
 import { Product } from './../services/products-data.service';
 import { Component } from '@angular/core'; 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from "src/app/shared/state";
 import { ProductsPageActions } from './actions';
@@ -22,7 +22,7 @@ export class ProductsAdminShellComponent {
   displayedColumns = ['name' , 'description' , 'price'];
 
   constructor(private store: Store<fromRoot.State>,
-              private route: ActivatedRoute) {
+              private router: Router) {
       this.products$ = this.store.select(fromRoot.selectAllProducts);
   }
 
@@ -39,7 +39,8 @@ export class ProductsAdminShellComponent {
     this.store.dispatch(ProductsPageActions.deleteProduct({ productId: item.id}));
   }
  
-  // setActiveItem(item: Product) {
-  //   // this.store.dispatch(ProductsPageActions.selectProduct({productId: item.id}));
-  // }
+  selectProduct(productId: string) {
+    // this.store.dispatch(ProductsPageActions.selectProduct({productId}));
+    this.router.navigateByUrl(`/products/${productId}`);
+  }
 }

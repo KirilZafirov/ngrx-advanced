@@ -8,6 +8,7 @@ import { ProductAdminDetailsComponent } from './product-admin-details/product-ad
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductsAdminEffects } from './products-admin-api.effect';
 import { ProductsService } from '../services/products-data.service';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { ProductsService } from '../services/products-data.service';
     EffectsModule.forFeature([ProductsAdminEffects]),
     SharedModule,
   ],
-  declarations: [ProductsAdminShellComponent , ProductAdminDetailsComponent , AddProductComponent],
+  declarations: [ProductsAdminShellComponent , ProductAdminDetailsComponent , AddProductComponent , ProductListComponent],
   entryComponents: [],
   providers:[ProductsService]
 })

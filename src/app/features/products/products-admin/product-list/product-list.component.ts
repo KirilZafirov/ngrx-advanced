@@ -1,0 +1,26 @@
+import { Product } from './../../services/products-data.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss']
+})
+export class ProductListComponent {
+    @Input() products: Product[];
+
+    @Output() selected: EventEmitter<string> = new EventEmitter(); 
+    @Output() removed: EventEmitter<Product> = new EventEmitter(); 
+
+    constructor() { 
+      
+    }
+
+    select(productId: string) {
+      this.selected.emit(productId);
+    }
+
+    remove(product: Product) {
+      this.removed.emit(product);
+    }
+}

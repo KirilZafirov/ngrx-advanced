@@ -11,31 +11,35 @@
       "name": "test",
       "description": "this is some really nice description",
       "price": 45,
+      "currencyType": "USD",
       "id": "a66425cf-62b5-4d58-ab0b-ef654f0080a0"
     },
     {
       "name": "tss6",
       "description": "sadfsdgedsgchetyjhetyuje",
       "price": 2343,
-      "currencyType": null,
+      "currencyType": "GBP",
       "id": "V05cnE1"
     },
     {
       "name": "bfdw",
       "description": "gdfgdfgdbfgbrgf",
       "price": 354,
+      "currencyType": "EUR",
       "id": "yHIFR04"
     },
     {
       "name": "asda2342",
       "description": "dfgdgfd",
       "price": 345,
+      "currencyType": "GBP",
       "id": "Xs0Ss_l"
     },
     {
       "name": "testing ",
       "description": "asdasdasdas",
       "price": 123,
+      "currencyType": "USD",
       "id": "OC5y4fB"
     }
   ]
