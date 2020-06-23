@@ -8,14 +8,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProductListComponent {
     @Input() products: Product[];
+    @Input() activeProductId: string;
 
     @Output() selected: EventEmitter<string> = new EventEmitter(); 
     @Output() removed: EventEmitter<Product> = new EventEmitter(); 
 
     constructor() { 
-      
     }
-
+    
     select(productId: string) {
       this.selected.emit(productId);
     }

@@ -1,12 +1,15 @@
 <div class="row">
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-8">
-        <product-list [products]="products$ | async" (selected)="selectProduct($event)" (removed)="removeItem($event)">
+      <div [ngClass]="(activeProductId$ | async)? 'col-md-8': 'col-md-12'">
+        <product-list [products]="products$ | async" 
+                      [activeProductId]="activeProductId$ | async"
+                      (selected)="selectProduct($event)" 
+                      (removed)="removeItem($event)">
         </product-list>
       </div>
     
-      <div class="col-md-4">
+      <div  [ngClass]="(activeProductId$ | async)? 'col-md-4': ''">
         <router-outlet></router-outlet>
       </div>
     </div>

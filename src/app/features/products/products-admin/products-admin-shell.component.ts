@@ -1,3 +1,4 @@
+import { selectActiveProductId } from './../../../shared/state/products.reducer';
 import { tap } from 'rxjs/operators';
 import { ProductSearchParams } from './../../models/product-search-params.model'; 
 import { Observable } from 'rxjs';
@@ -17,13 +18,14 @@ export class ProductsAdminShellComponent {
   };
   products$: Observable<Product[]>; 
   activeProduct$: Observable<Product>;
-
+  activeProductId$: Observable<string>;
   addLink = './add-product';
   displayedColumns = ['name' , 'description' , 'price'];
 
   constructor(private store: Store<fromRoot.State>,
               private router: Router) {
       this.products$ = this.store.select(fromRoot.selectAllProducts);
+      this.activeProductId$ = this.store.select(state => state.products.activeProductId);
   }
 
 

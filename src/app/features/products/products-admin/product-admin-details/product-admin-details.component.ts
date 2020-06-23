@@ -71,6 +71,7 @@ export class ProductAdminDetailsComponent {
     this.store.dispatch(
       ProductsPageActions.updateProduct({ productId: this.searchParams.id, product: requestBody })
     );
+    this.router.navigateByUrl('/products');
   }
 
 
