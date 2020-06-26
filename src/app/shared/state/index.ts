@@ -29,3 +29,8 @@ export const metaReducers: MetaReducer<State>[] = [];
     selectProductsState,
     fromProducts.selectActiveProduct
  )
+ 
+export const isProductFormActive = createSelector(
+   selectProductsState,
+   fromProducts.productsFormActive
+)

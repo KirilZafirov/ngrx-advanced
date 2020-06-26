@@ -12,13 +12,15 @@ export interface State extends EntityState<Product> {
     activeProductId: string | null,
     products:Product[],
     productDetails: Product ,
+    addProductPageActive: boolean
 }
 
 
 export const initialState: State = adapter.getInitialState({
     activeProductId: null,
     products: [],
-    productDetails: null
+    productDetails: null,
+    addProductPageActive: false
 });
 
 
@@ -33,7 +35,13 @@ export const productsReducer = createReducer(
     on(ProductsPageActions.selectProduct, (state, action) => {
       return {
         ...state,
-        activeProductId: action.productId
+        activeProductId: action.productId, 
+      };
+    }),
+    on(ProductsPageActions.addProductPageActive, (state, action) => {
+      return {
+        ...state,
+        addProductPageActive: action.isActive, 
       };
     }),
     on(ProductsApiActions.productLoaded, (state, action) => {
@@ -49,7 +57,7 @@ export const productsReducer = createReducer(
     on(ProductsApiActions.productCreated, (state, action) => {
       return adapter.addOne(action.product, {
         ...state,
-        activeProductId: null
+        addProductPageActive: false
       });
     }),
     on(ProductsApiActions.productUpdated, (state, action) => {
@@ -62,7 +70,10 @@ export const productsReducer = createReducer(
       );
     }),
     on(ProductsApiActions.productDeleted, (state, action) => {
-      return adapter.removeOne(action.productId, state);
+      return adapter.removeOne(action.productId, {
+        ...state,
+        activeProductId: null
+      });
     })
   );
   
@@ -73,6 +84,14 @@ export function reducer( state: State | undefined , action: Action) {
 export const { selectAll , selectEntities } = adapter.getSelectors();
 export const selectActiveProductId = (state: State) => state.activeProductId;
 
+export const  addProductPageActive = (state: State) => state.addProductPageActive;
+
+export const productsFormActive = createSelector(
+  selectActiveProductId,
+  addProductPageActive,
+  (activeProduct , addActive) => !!activeProduct || addActive
+)
+
 export const selectActiveProduct = createSelector(
     selectEntities,
     selectActiveProductId,
@@ -80,3 +99,5 @@ export const selectActiveProduct = createSelector(
         return activeProductId ? productEntities[activeProductId]! : null
     }
 )
+
+

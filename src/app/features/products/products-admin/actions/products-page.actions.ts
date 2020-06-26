@@ -21,6 +21,11 @@ export const createProduct = createAction(
     props<{product: Product}>()
 );
 
+export const addProductPageActive = createAction(
+    "[Add Product Component] Add Product page active",
+    props<{isActive: boolean}>()
+);
+
 export const updateProduct = createAction(
     "[Products Page] Update Product",
     props<{productId: string , product: Product}>()

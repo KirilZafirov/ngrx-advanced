@@ -29,7 +29,7 @@ export class ProductAdminDetailsComponent {
     this.route.paramMap.pipe(
       tap((params: ParamMap) => {
         this.searchParams.id = params.get('productId');
-        this.store.dispatch(ProductsPageActions.selectProduct({ productId: this.searchParams.id }))
+        this.store.dispatch(ProductsPageActions.selectProduct({ productId: this.searchParams.id }));
         return this.searchParams
       }),
       takeUntil(this.destroy$)
@@ -47,7 +47,6 @@ export class ProductAdminDetailsComponent {
 
   selected: string;
   ngOnInit(): void {
-
 
   }
 
@@ -71,7 +70,6 @@ export class ProductAdminDetailsComponent {
     this.store.dispatch(
       ProductsPageActions.updateProduct({ productId: this.searchParams.id, product: requestBody })
     );
-    this.router.navigateByUrl('/products');
   }
 
 

@@ -1,14 +1,13 @@
-import { selectActiveProductId } from './../../../shared/state/products.reducer';
-import { tap } from 'rxjs/operators';
-import { ProductSearchParams } from './../../models/product-search-params.model'; 
 import { Observable } from 'rxjs';
 import { Product } from './../services/products-data.service';
 import { Component } from '@angular/core'; 
-import { ActivatedRoute, Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import {  Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import * as fromRoot from "src/app/shared/state";
 import { ProductsPageActions } from './actions';
 import { SearchParams } from 'src/app/models/search-params.model';
+import { state } from '@angular/animations';
+import { tap } from 'rxjs/operators';
 @Component({
   templateUrl: './products-admin-shell.component.html'
 })
@@ -19,15 +18,18 @@ export class ProductsAdminShellComponent {
   products$: Observable<Product[]>; 
   activeProduct$: Observable<Product>;
   activeProductId$: Observable<string>;
-  addLink = './add-product';
+  isProductFormActive$: Observable<boolean>;
+
   displayedColumns = ['name' , 'description' , 'price'];
 
   constructor(private store: Store<fromRoot.State>,
               private router: Router) {
       this.products$ = this.store.select(fromRoot.selectAllProducts);
       this.activeProductId$ = this.store.select(state => state.products.activeProductId);
-  }
-
+      this.isProductFormActive$ = this.store.select(fromRoot.isProductFormActive).pipe(
+        tap(val => console.log(val))
+      );
+  } 
 
   ngOnInit(): void {
     this.getProducts();
@@ -42,7 +44,10 @@ export class ProductsAdminShellComponent {
   }
  
   selectProduct(productId: string) {
-    // this.store.dispatch(ProductsPageActions.selectProduct({productId}));
     this.router.navigateByUrl(`/products/${productId}`);
+  }
+
+  addProduct() {
+    this.router.navigateByUrl('/products/add-product');
   }
 }

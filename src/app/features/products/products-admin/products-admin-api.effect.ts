@@ -2,13 +2,15 @@
 import { Injectable } from "@angular/core";
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import { ProductsService } from '../services/products-data.service';
-import { exhaustMap, map, mergeMap, concatMap} from 'rxjs/operators';
+import { exhaustMap, map, mergeMap, concatMap, tap} from 'rxjs/operators';
 import { ProductsPageActions, ProductsApiActions } from './actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ProductsAdminEffects {
  
     constructor(private productsService: ProductsService, 
+        private router: Router,
         private actions$: Actions) {
         }
 
@@ -40,6 +42,7 @@ export class ProductsAdminEffects {
         mergeMap(action =>
         this.productsService.save(action.product).pipe(
             map(product => ProductsApiActions.productCreated({ product })),
+            tap(() => this.router.navigateByUrl('/products'))
             // catchError(() => EMPTY)
         )
         )
@@ -50,20 +53,20 @@ export class ProductsAdminEffects {
     updateProduct$ = this.actions$.pipe(
         ofType(ProductsPageActions.updateProduct),
         concatMap( action => this.productsService.update(action.product).pipe(
-            map(product => ProductsApiActions.productUpdated({product}))
+            map(product => ProductsApiActions.productUpdated({product})),
+            tap(() => this.router.navigateByUrl('/products'))
         )
         )
-    );
-
+    ); 
     @Effect()
     deleteBook$ = this.actions$.pipe(
         ofType(ProductsPageActions.deleteProduct),
         mergeMap(action =>
         this.productsService.remove(action.productId).pipe(
             map(() => ProductsApiActions.productDeleted({ productId: action.productId })),
+            tap(() => this.router.navigateByUrl('/products'))
             // catchError(() => EMPTY)
         )
         )
     );
-
 }

@@ -16,6 +16,7 @@ export class AddProductComponent {
     private formBuilder: FormBuilder,
     private router: Router) {
      this.form = this.initForm();
+     this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: true}));
   }
 
 
@@ -42,6 +43,7 @@ export class AddProductComponent {
   
   clear() {
     this.store.dispatch(ProductsPageActions.clearSelectedProduct());
+    this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false}));
     this.router.navigateByUrl('/products');
   } 
 }
