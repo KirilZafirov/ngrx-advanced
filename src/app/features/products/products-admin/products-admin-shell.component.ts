@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from "src/app/shared/state";
 import { ProductsPageActions } from './actions';
 import { SearchParams } from 'src/app/models/search-params.model';
-import { state } from '@angular/animations';
 import { tap } from 'rxjs/operators';
 @Component({
   templateUrl: './products-admin-shell.component.html'
