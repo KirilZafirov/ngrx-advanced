@@ -2,12 +2,12 @@ import { SearchParams } from './../../models/search-params.model';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import { BaseResponse } from 'src/app/models/response.model';
 import { tap } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
 
 const BASE_URL = "http://localhost:3000/";
 
+// TODO: Add Angular decorator.
 @Injectable()
 export class BaseApiService<T> implements OnDestroy {
 
