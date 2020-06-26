@@ -24,7 +24,7 @@ const routes: Routes = [
     },
     {
       path: '',
-      redirectTo: 'products',
+      loadChildren:() =>import('./features/landing-page/landing-page.module').then(m => m.LandingPageModule) ,
       pathMatch: 'full',
     },
     {
