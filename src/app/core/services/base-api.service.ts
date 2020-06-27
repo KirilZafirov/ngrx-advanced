@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
+import { v4 as uuidv4 } from "uuid";
 
 const BASE_URL = "http://localhost:3000/";
 
@@ -101,13 +102,14 @@ export class BaseApiService<T> implements OnDestroy {
   }
 
   create_UUID(){
-    var dt = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = (dt + Math.random()*16)%16 | 0;
-        dt = Math.floor(dt/16);
-        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-    });
-    return uuid;
+    // var dt = new Date().getTime();
+    // var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    //     var r = (dt + Math.random()*16)%16 | 0;
+    //     dt = Math.floor(dt/16);
+    //     return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    // });
+    // return uuid;
+    return uuidv4();
 }
 
   ngOnDestroy() {
