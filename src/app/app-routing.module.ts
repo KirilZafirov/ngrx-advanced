@@ -23,6 +23,16 @@ const routes: Routes = [
       loadChildren:() =>import('./features/forbidden/forbidden.module').then(m => m.ForbiddenModule) ,
     },
     {
+      path: 'login',
+      loadChildren:() =>import('./features/auth/auth.module').then(m => m.AuthModule) ,
+      pathMatch: 'full',
+    },
+    {
+      path: 'user',
+      loadChildren:() =>import('./features/user/user.module').then(m => m.UserModule) ,
+      pathMatch: 'full',
+    },
+    {
       path: '',
       loadChildren:() =>import('./features/landing-page/landing-page.module').then(m => m.LandingPageModule) ,
       pathMatch: 'full',
