@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,7 @@ import { HandleHttpErrorInterceptor } from './interceptors/handle-http-error.int
   providers: [
     NotificationService, 
     BaseApiService, 
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HandleHttpErrorInterceptor,

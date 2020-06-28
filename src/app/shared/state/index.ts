@@ -1,15 +1,42 @@
 
 import { ActionReducerMap , MetaReducer, createSelector } from '@ngrx/store';
 import * as fromProducts from "./products.reducer";
+import * as fromAuth from "./auth.reducer";
+import { logoutMetareducer } from "./logout.metareducer";
+
 export interface State {
     products: fromProducts.State;
+    auth: fromAuth.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  products: fromProducts.reducer
+  products: fromProducts.reducer,
+  auth: fromAuth.reducer
 }
 
-export const metaReducers: MetaReducer<State>[] = [];
+export const metaReducers: MetaReducer<State>[] = [logoutMetareducer];
+
+
+/**
+ * Auth selectors
+ *
+ */
+export const selectAuthState = (state: State) => state.auth;
+export const selectGettingAuthStatus = createSelector(
+   selectAuthState,
+   fromAuth.selectGettingStatus
+);
+
+export const selectAuthUser = createSelector(
+   selectAuthState,
+   fromAuth.selectUser
+)
+
+
+export const selectAuthError = createSelector(
+   selectAuthState,
+   fromAuth.selectError
+)
 
 /**
  * Products selectors

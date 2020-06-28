@@ -1,5 +1,4 @@
-Login Page
-
-<app-login-form>
-    
-</app-login-form>
+<app-login-form
+    [error]="error$ | async"
+    (login)="onLogin($event)"
+></app-login-form>

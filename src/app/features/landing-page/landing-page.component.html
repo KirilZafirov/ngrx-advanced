@@ -1,1 +1,18 @@
 LandingPageComponent
+
+<ng-container *ngIf="user$ | async as user; else guest">
+    <h4>Welcome</h4>
+    <h3>{{ user.username }}</h3>
+    <button
+      mat-icon-button
+      type="button"
+      (click)="onLogout()"
+      matTooltip="Logout"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </ng-container>
+
+<ng-template #guest>
+    Hello Guest
+</ng-template>
