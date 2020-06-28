@@ -1,6 +1,6 @@
 
 import { ProductsPageActions } from 'src/app/features/products/products-admin/actions';
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { tap, takeUntil, filter } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -12,7 +12,7 @@ import * as fromRoot from "src/app/shared/state";
 @Component({
   templateUrl: './product-admin-details.component.html'
 })
-export class ProductAdminDetailsComponent {
+export class ProductAdminDetailsComponent implements OnInit , OnDestroy  {
   searchParams: ProductSearchParams = {
     all: true
   };
@@ -79,6 +79,7 @@ export class ProductAdminDetailsComponent {
   }
 
   ngOnDestroy(): void {
+    this.store.dispatch(ProductsPageActions.clearSelectedProduct());
     this.destroy$.next();
     this.destroy$.complete();
   }

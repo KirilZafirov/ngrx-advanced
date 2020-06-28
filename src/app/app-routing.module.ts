@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 
 
 const routerOptions: ExtraOptions = {
@@ -13,6 +14,7 @@ const routes: Routes = [
     {
       path: 'products',
       loadChildren: () => import('./features/products/products-handler.module').then(m => m.ProductsHandlerModule),
+      canActivate: [AuthGuard]
     },
     {
       path: '404',

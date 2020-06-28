@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 
 import { NgModule, Optional, SkipSelf } from '@angular/core';
@@ -17,6 +18,7 @@ import { HandleHttpErrorInterceptor } from './interceptors/handle-http-error.int
   exports: [HttpClientModule],
   declarations: [],
   providers: [
+    AuthGuard,
     NotificationService, 
     BaseApiService, 
     AuthService,

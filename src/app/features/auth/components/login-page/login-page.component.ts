@@ -15,13 +15,11 @@ import { AuthUserActions } from './../../actions/index';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent { 
-    
-  gettingStatus$: Observable<boolean>;
+     
   user$: Observable<User | null>;
   error$: Observable<string | null>;
 
-  constructor(private store: Store<State>) {
-    this.gettingStatus$ = store.select(selectGettingAuthStatus);
+  constructor(private store: Store<State>) { 
     this.user$ = store.select(selectAuthUser);
     this.error$ = store.select(selectAuthError);
   }

@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/shared/state';
@@ -8,7 +8,7 @@ import { ProductsPageActions } from '../actions';
 @Component({
   templateUrl: './add-product.component.html'
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit , OnDestroy {
    
   form: FormGroup;
 
@@ -41,9 +41,12 @@ export class AddProductComponent {
     this.store.dispatch(ProductsPageActions.createProduct({product: requestBody}));
   }
   
-  clear() {
-    this.store.dispatch(ProductsPageActions.clearSelectedProduct());
+  clear() { 
     this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false}));
     this.router.navigateByUrl('/products');
   } 
+
+  ngOnDestroy(): void {  
+    this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false}));
+  }
 }
