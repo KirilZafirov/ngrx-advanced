@@ -1,3 +1,4 @@
+import { UserComponent } from './user/user.component';
 import { MaterialModule } from './material.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
-const sharedComponents = [ ];
+const sharedComponents = [UserComponent ];
    
 
 @NgModule({

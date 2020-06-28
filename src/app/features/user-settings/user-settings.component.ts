@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { User } from '../../shared/models/user.model'; 
+
+import { Component } from "@angular/core";
 import { Observable } from 'rxjs';
-import { User } from './shared/models/user.model';
 import { Store } from '@ngrx/store';
-import { State, selectAuthUser } from './shared/state';
-import { AuthUserActions } from './features/auth/actions';
+import { State, selectAuthUser } from 'src/app/shared/state';
+import { AuthUserActions } from '../auth/actions';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: "./user-settings.component.html",
+  styleUrls: ["./user-settings.component.scss"]
 })
-export class AppComponent {
-  title = 'ngxr-advanced';
+export class UserSettingsComponent { 
   user$: Observable<User | null>;
 
   constructor(private store: Store<State> , private router: Router) {

@@ -13,7 +13,12 @@ export class AuthEffects {
     getAuthStatus$ = createEffect(() =>
         this.auth
             .getStatus()
-            .pipe(map(userOrNull => AuthApiActions.getAuthStatusSuccess(userOrNull)))
+            .pipe(map(userOrNull => {
+                if(userOrNull) {
+                    this.router.navigateByUrl('');
+                };
+                return AuthApiActions.getAuthStatusSuccess(userOrNull)
+            }))
     );
 
 

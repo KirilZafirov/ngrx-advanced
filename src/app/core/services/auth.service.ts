@@ -13,7 +13,7 @@ export class AuthService {
       return throwError(new Error("Invalid username or password"));
     }
 
-    return timer(750).pipe(
+    return timer(50).pipe(
       map(() => {
         const user = { id: uuidv4(), username };
 
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   getStatus(): Observable<null | User> {
-    return timer(750).pipe(
+    return timer(50).pipe(
       map(() => {
         const userString = localStorage.getItem("auth");
 

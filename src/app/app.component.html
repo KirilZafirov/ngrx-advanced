@@ -2,6 +2,12 @@
 
 <mat-toolbar>
   <span>My Application</span>
+  <span class="nav-spacer"></span>
+  <app-user
+  [user]="user$ | async"
+  (logout)="onLogout($event)"
+  (login)="onLogin($event)">
+  </app-user>
 </mat-toolbar>
  
 <div class="container-fluid">

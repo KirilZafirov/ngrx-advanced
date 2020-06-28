@@ -29,7 +29,7 @@ const routes: Routes = [
     },
     {
       path: 'user',
-      loadChildren:() =>import('./features/user/user.module').then(m => m.UserModule) ,
+      loadChildren:() =>import('./features/user-settings/user-settings.module').then(m => m.UserSettingsModule) ,
       pathMatch: 'full',
     },
     {

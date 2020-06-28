@@ -4,3 +4,16 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+
+.nav {
+
+    &-user {
+        display: inline-flex;
+        >h4 {
+            align-self: center;
+        } 
+    }
+    &-spacer {
+        flex: 1 1 auto;
+    }
+}
