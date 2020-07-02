@@ -1,0 +1,25 @@
+import { StorageService } from 'src/app/core/services/storage.service';
+import { Injectable } from '@angular/core';
+import * as localforage from 'localforage';
+
+@Injectable({ providedIn: 'root' })
+export class IndexedDBStorageService implements StorageService {
+  private db = localforage.createInstance({
+    driver: localforage.INDEXEDDB,
+    name: 'myApp',
+    version: 1.0,
+    storeName: 'forms',
+  });
+
+  getItem<T>(key: string): Promise<T> {
+    return this.db.getItem(key);
+  }
+
+  setItem<T>(key: string, value: any): Promise<void> {
+    return this.db.setItem(key, value);
+  }
+
+  removeItem(key: string): Promise<void> {
+    return this.db.removeItem(key);
+  }
+}

@@ -12,7 +12,6 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     ProductsAdminRoutingModule,
     EffectsModule.forFeature([ProductsAdminEffects]),
     SharedModule,

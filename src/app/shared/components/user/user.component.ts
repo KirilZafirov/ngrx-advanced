@@ -1,5 +1,5 @@
 
-import { User } from './../models/user.model';
+import { User } from './../../models/user.model';
 
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 

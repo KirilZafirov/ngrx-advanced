@@ -1,4 +1,4 @@
-<ng-container *ngIf="form">
+ 
   <form class="example-form" [formGroup]="form" (ngSubmit)="submit(form)">
     <div class="row"> 
         <mat-form-field class="example-full-width">
@@ -20,5 +20,6 @@
         [disabled]="form.invalid && !form.dirty">Save</button>
       <button mat-button type="button" class="cancel-btn" (click)="clear()">Cancel</button>
     </div>
-  </form>
-</ng-container>
+  </form> 
+
+ 

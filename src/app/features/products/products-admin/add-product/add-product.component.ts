@@ -1,35 +1,33 @@
 import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup , Validators, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/shared/state';
 import { ProductsPageActions } from '../actions';
+import { StorageService } from 'src/app/core/services/storage.service';
+import { IndexedDBStorageService } from 'src/app/core/services/indexedDb-storage.service';
+import { filter, tap } from 'rxjs/operators';
 
 @Component({
-  templateUrl: './add-product.component.html'
+  templateUrl: './add-product.component.html',
+  providers: [{ provide: StorageService, useClass: IndexedDBStorageService }]
 })
 export class AddProductComponent implements OnInit , OnDestroy {
    
-  form: FormGroup;
-
+  form: FormGroup = new FormGroup({
+    name: new FormControl(null , [Validators.required]),
+    description:  new FormControl(null , [Validators.required]),
+    price: new FormControl(null , [Validators.required]),
+  }); 
+  
   constructor(private store: Store<State>,
-    private formBuilder: FormBuilder,
-    private router: Router) {
-     this.form = this.initForm();
+    private router: Router) { 
      this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: true}));
-  }
+  } 
 
-
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
-
-  initForm() {
-   return this.formBuilder.group({
-      name: [null, [Validators.required]],
-      description: [ null, [Validators.required]],
-      price: [ null, [Validators.required]],
-    })
-  }
+ 
   
   submit(form) {
     const value = form.value;

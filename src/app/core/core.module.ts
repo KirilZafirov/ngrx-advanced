@@ -1,8 +1,9 @@
+import { IndexedDBStorageService } from './services/indexedDb-storage.service';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { SessionStorageService } from './services/storage.service';
+import { SessionStorageService } from './services/session-storage.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { SharedModule } from '../shared/shared.module'; 
@@ -22,6 +23,7 @@ import { HandleHttpErrorInterceptor } from './interceptors/handle-http-error.int
     BaseApiService, 
     AuthService,
     SessionStorageService,
+    IndexedDBStorageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HandleHttpErrorInterceptor,
