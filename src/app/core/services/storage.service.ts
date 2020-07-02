@@ -2,7 +2,7 @@ import { IndexedDBStorageService } from './indexedDb-storage.service';
 import { Injectable } from '@angular/core';
 import { SessionStorageService } from './session-storage.service';
 
-@Injectable({ providedIn: 'root' , useClass: IndexedDBStorageService})
+@Injectable({ providedIn: 'root' , useClass: SessionStorageService})
 
 export abstract class StorageService {
   abstract getItem<T>(key: string): Promise<T>;

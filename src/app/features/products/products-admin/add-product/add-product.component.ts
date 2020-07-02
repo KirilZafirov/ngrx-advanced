@@ -7,10 +7,11 @@ import { ProductsPageActions } from '../actions';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { IndexedDBStorageService } from 'src/app/core/services/indexedDb-storage.service';
 import { filter, tap } from 'rxjs/operators';
+import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 
 @Component({
   templateUrl: './add-product.component.html',
-  providers: [{ provide: StorageService, useClass: IndexedDBStorageService }]
+  providers: [{ provide: StorageService, useClass: SessionStorageService }]
 })
 export class AddProductComponent implements OnInit , OnDestroy {
    
@@ -28,7 +29,6 @@ export class AddProductComponent implements OnInit , OnDestroy {
   ngOnInit(): void { 
   }
  
-  
   submit(form) {
     const value = form.value;
 

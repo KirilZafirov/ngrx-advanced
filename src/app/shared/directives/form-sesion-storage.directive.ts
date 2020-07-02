@@ -8,7 +8,7 @@ import { Subject, merge, fromEvent } from 'rxjs';
 })
 export class FormStorageDirective {
     @Input() name: string;
-    @Input() saveStrategy: 'change' | 'unload' = 'unload';
+    @Input() saveStrategy: 'change' | 'unload' = 'change';
 
     private destroy = new Subject();
     private destroy$ = this.destroy.asObservable();
@@ -18,8 +18,7 @@ export class FormStorageDirective {
         this.storage.removeItem(this.key);
     }
     constructor(@Self() private container: ControlContainer,
-        private storage: StorageService) {
-    }
+        private storage: StorageService) { }
 
     private get key() {
         return `${this.name}-form`;
@@ -42,10 +41,7 @@ export class FormStorageDirective {
             this.destroy$
         ).pipe(
             takeUntil(this.destroy$),
-            filter(() => {
-                debugger;
-                return this.group.dirty
-            }),
+            filter(() => this.group.dirty),
             take(1)
         ).subscribe(() => this.saveValue(this.group.value));
     }
@@ -57,7 +53,6 @@ export class FormStorageDirective {
     }
 
     private saveValue(value) {
-        debugger;
         sessionStorage.setItem(this.key, JSON.stringify(value));
     }
     ngOnDestroy() {
