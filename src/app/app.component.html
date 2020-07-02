@@ -4,6 +4,10 @@
   <button (click)="sidenav.toggle()" mat-mini-fab>
     <mat-icon>menu</mat-icon>
   </button>
+  <button (click)="searchContainer.toggle()" mat-mini-fab>
+    <mat-icon>search</mat-icon>
+  </button>
+  
   <span   [routerLink]="'/'">{{ title }}</span>
   <span class="nav-spacer"></span>
  
@@ -16,7 +20,7 @@
 
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" class="app-sidenav">
+  <mat-sidenav #sidenav mode="side" class="app-sidenav" role="navigation">
     <nav>
       <a
         mat-button
@@ -30,7 +34,9 @@
       </a>
     </nav>
   </mat-sidenav>
-
+  <mat-sidenav #searchContainer mode="side" class="app-sidenav" role="search and filter" position="end">
+    Search
+  </mat-sidenav>
   <div class="container-fluid">
     <router-outlet></router-outlet>
   </div>

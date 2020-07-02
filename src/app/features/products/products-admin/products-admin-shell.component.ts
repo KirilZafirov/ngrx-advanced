@@ -25,9 +25,7 @@ export class ProductsAdminShellComponent {
               private router: Router) {
       this.products$ = this.store.select(fromRoot.selectAllProducts);
       this.activeProductId$ = this.store.select(state => state.products.activeProductId);
-      this.isProductFormActive$ = this.store.select(fromRoot.isProductFormActive).pipe(
-        tap(val => console.log(val))
-      );
+      this.isProductFormActive$ = this.store.select(fromRoot.isProductFormActive);
   } 
 
   ngOnInit(): void {

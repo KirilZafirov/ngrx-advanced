@@ -21,10 +21,11 @@
       "price": 76
     },
     {
-      "id": "25aaa191-8241-47a4-8aa0-1d6a2a9d8d83",
       "name": "new Test",
       "description": "kjhsfksdhfkjlhsdfsd",
-      "price": 76
+      "price": 76,
+      "currencyType": "USD",
+      "id": "25aaa191-8241-47a4-8aa0-1d6a2a9d8d83"
     },
     {
       "id": "08226221-ad8f-49a5-92b0-93b1649a1af2",

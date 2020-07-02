@@ -1,12 +1,11 @@
-import { AuthGuard } from './guards/auth.guard';
-import { AuthService } from './services/auth.service';
-
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { SessionStorageService } from './services/storage.service';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
 import { SharedModule } from '../shared/shared.module'; 
-
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';  
 import { NotificationService } from './services/notification.service';
 import { BaseApiService } from './services/base-api.service';
@@ -22,6 +21,7 @@ import { HandleHttpErrorInterceptor } from './interceptors/handle-http-error.int
     NotificationService, 
     BaseApiService, 
     AuthService,
+    SessionStorageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HandleHttpErrorInterceptor,
