@@ -23,7 +23,7 @@ export class AddProductComponent implements OnInit , OnDestroy {
   
   constructor(private store: Store<State>,
     private router: Router) { 
-     this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: true}));
+     this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: true , productDetailsLoading: true}));
   } 
 
   ngOnInit(): void { 
@@ -40,11 +40,11 @@ export class AddProductComponent implements OnInit , OnDestroy {
   }
   
   clear() { 
-    this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false}));
+    this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false , productDetailsLoading: false}));
     this.router.navigateByUrl('/products');
   } 
 
   ngOnDestroy(): void {  
-    this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false}));
+    this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false , productDetailsLoading: false}));
   }
 }

@@ -6,7 +6,8 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from "src/app/shared/state";
 import { ProductsPageActions } from './actions';
 import { SearchParams } from 'src/app/models/search-params.model';
-import { tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 @Component({
   templateUrl: './products-admin-shell.component.html'
 })
@@ -17,15 +18,17 @@ export class ProductsAdminShellComponent {
   products$: Observable<Product[]>; 
   activeProduct$: Observable<Product>;
   activeProductId$: Observable<string>;
-  isProductFormActive$: Observable<boolean>;
-
-  displayedColumns = ['name' , 'description' , 'price'];
-
+  isProductFormActive$: Observable<boolean>; 
+  productDetailsLoading$: Observable<boolean>; 
+  
   constructor(private store: Store<fromRoot.State>,
-              private router: Router) {
+              private router: Router,
+              public dialog: MatDialog) {
       this.products$ = this.store.select(fromRoot.selectAllProducts);
       this.activeProductId$ = this.store.select(state => state.products.activeProductId);
       this.isProductFormActive$ = this.store.select(fromRoot.isProductFormActive);
+      this.productDetailsLoading$ = this.store.select(state => state.products.productDetailsLoading);
+      
   } 
 
   ngOnInit(): void {
@@ -37,7 +40,7 @@ export class ProductsAdminShellComponent {
   }
 
   removeItem(item: Product) {
-    this.store.dispatch(ProductsPageActions.deleteProduct({ productId: item.id}));
+    this.confirmDialog(item);
   }
  
   selectProduct(productId: string) {
@@ -46,5 +49,22 @@ export class ProductsAdminShellComponent {
 
   addProduct() {
     this.router.navigateByUrl('/products/add-product');
+  } 
+
+  confirmDialog(item: Product): void {
+    const message = `Are you sure you want to do this?`;
+
+    const dialogData = new ConfirmDialogModel("Confirm Action", message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if(dialogResult){
+        this.store.dispatch(ProductsPageActions.deleteProduct({ productId: item.id}));
+      }
+    });
   }
 }

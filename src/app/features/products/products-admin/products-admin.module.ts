@@ -10,6 +10,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ProductsAdminEffects } from './products-admin-api.effect';
 import { ProductsService } from '../services/products-data.service';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   imports: [

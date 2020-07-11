@@ -5,8 +5,8 @@ import { tap, takeUntil, filter } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductSearchParams } from 'src/app/features/models/product-search-params.model';
-import { Subject } from 'rxjs';
-import { ProductsService, Product } from '../../services/products-data.service';
+import { Subject, Observable } from 'rxjs';
+import { Product } from '../../services/products-data.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from "src/app/shared/state";
 @Component({
@@ -18,7 +18,8 @@ export class ProductAdminDetailsComponent implements OnInit , OnDestroy  {
   };
   destroy$ = new Subject();
   form: FormGroup;
-  currencyType = CURRENCY_TYPE;
+  currencyType = CURRENCY_TYPE; 
+  productDetailsLoading$: Observable<boolean>;
 
   constructor(
     private store: Store<fromRoot.State>,
@@ -26,23 +27,24 @@ export class ProductAdminDetailsComponent implements OnInit , OnDestroy  {
     private route: ActivatedRoute,
     private router: Router) { 
 
+    
     this.route.paramMap.pipe(
       tap((params: ParamMap) => {
         this.searchParams.id = params.get('productId');
-        this.store.dispatch(ProductsPageActions.selectProduct({ productId: this.searchParams.id }));
+        this.store.dispatch(ProductsPageActions.selectProduct({ productId: this.searchParams.id , productDetailsLoading: true}));
         return this.searchParams
       }),
       takeUntil(this.destroy$)
-    ).subscribe((product) => {
-
-    });
+    ).subscribe();
 
     this.store.select(fromRoot.selectProductDetails).pipe(
       filter(p => !!p)
     ).subscribe(product => {
       this.form = this.initForm(product);
       this.selected = product.currencyType
-    });
+    }); 
+
+    this.productDetailsLoading$ = this.store.select(state => state.products.productDetailsLoading);
   }
 
   selected: string;

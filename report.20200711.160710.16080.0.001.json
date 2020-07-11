@@ -4,10 +4,10 @@
     "reportVersion": 1,
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20200711.143533.27364.0.001.json",
-    "dumpEventTime": "2020-07-11T14:35:33Z",
-    "dumpEventTimeStamp": "1594470933513",
-    "processId": 27364,
+    "filename": "report.20200711.160710.16080.0.001.json",
+    "dumpEventTime": "2020-07-11T16:07:10Z",
+    "dumpEventTimeStamp": "1594476430840",
+    "processId": 16080,
     "cwd": "C:\\dev\\ngrx-advanced",
     "commandLine": [
       "C:\\Program Files\\nodejs\\node.exe",
@@ -51,74 +51,74 @@
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 57751031,
+        "user": 58346515,
         "nice": 0,
-        "sys": 42364359,
-        "idle": 991173031,
-        "irq": 10285781
+        "sys": 42661890,
+        "idle": 995777343,
+        "irq": 10349875
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 31978359,
+        "user": 32446546,
         "nice": 0,
-        "sys": 13269250,
-        "idle": 1046040453,
-        "irq": 443015
+        "sys": 13377078,
+        "idle": 1050961765,
+        "irq": 445921
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 81294765,
+        "user": 82347984,
         "nice": 0,
-        "sys": 28492171,
-        "idle": 981501109,
-        "irq": 592765
+        "sys": 28722015,
+        "idle": 985715375,
+        "irq": 597109
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 39072921,
+        "user": 39622953,
         "nice": 0,
-        "sys": 13643406,
-        "idle": 1038571718,
-        "irq": 341390
+        "sys": 13747218,
+        "idle": 1043415203,
+        "irq": 343421
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 71748546,
+        "user": 72583515,
         "nice": 0,
-        "sys": 23599156,
-        "idle": 995940343,
-        "irq": 590484
+        "sys": 23820234,
+        "idle": 1000381625,
+        "irq": 595687
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 34394562,
+        "user": 34837109,
         "nice": 0,
-        "sys": 13218140,
-        "idle": 1043675343,
-        "irq": 298890
+        "sys": 13334515,
+        "idle": 1048613750,
+        "irq": 301218
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 58839671,
+        "user": 59581671,
         "nice": 0,
-        "sys": 20342687,
-        "idle": 1012105687,
-        "irq": 496390
+        "sys": 20495750,
+        "idle": 1016707953,
+        "irq": 499921
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 43741359,
+        "user": 44296109,
         "nice": 0,
-        "sys": 16258203,
-        "idle": 1031288484,
-        "irq": 300781
+        "sys": 16414609,
+        "idle": 1036074656,
+        "irq": 303421
       }
     ],
     "networkInterfaces": [
@@ -257,27 +257,15 @@
       "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+546637"
     },
     {
-      "pc": "0x00007ff77e125d0d",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+550525"
-    },
-    {
-      "pc": "0x00007ff77e161f40",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+796848"
-    },
-    {
-      "pc": "0x00007ff77e111927",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+467607"
-    },
-    {
-      "pc": "0x000000928d9308ce",
+      "pc": "0x000003ceefd54a4e",
       "symbol": ""
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 2154147840,
-    "totalCommittedMemory": 2154147840,
-    "usedMemory": 2126494304,
-    "availableMemory": 47956888,
+    "totalMemory": 2151976960,
+    "totalCommittedMemory": 2151976960,
+    "usedMemory": 2127199128,
+    "availableMemory": 47679080,
     "memoryLimit": 2197815296,
     "heapSpaces": {
       "read_only_space": {
@@ -288,38 +276,38 @@
         "available": 0
       },
       "new_space": {
-        "memorySize": 4194304,
-        "committedMemory": 4194304,
-        "capacity": 2094912,
-        "used": 207664,
-        "available": 1887248
+        "memorySize": 2097152,
+        "committedMemory": 2097152,
+        "capacity": 1047456,
+        "used": 273512,
+        "available": 773944
       },
       "old_space": {
-        "memorySize": 2016034816,
-        "committedMemory": 2016034816,
-        "capacity": 2003479320,
-        "used": 2003172048,
-        "available": 307272
+        "memorySize": 2011054080,
+        "committedMemory": 2011054080,
+        "capacity": 1999157744,
+        "used": 1999138400,
+        "available": 19344
       },
       "code_space": {
-        "memorySize": 7507968,
-        "committedMemory": 7507968,
-        "capacity": 6560960,
-        "used": 6560960,
+        "memorySize": 8294400,
+        "committedMemory": 8294400,
+        "capacity": 7285152,
+        "used": 7285152,
         "available": 0
       },
       "map_space": {
-        "memorySize": 9965568,
-        "committedMemory": 9965568,
-        "capacity": 1042560,
-        "used": 1042560,
+        "memorySize": 10227712,
+        "committedMemory": 10227712,
+        "capacity": 1048080,
+        "used": 1048080,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 116133888,
-        "committedMemory": 116133888,
-        "capacity": 115475480,
-        "used": 115475480,
+        "memorySize": 119992320,
+        "committedMemory": 119992320,
+        "capacity": 119418392,
+        "used": 119418392,
         "available": 0
       },
       "code_large_object_space": {
@@ -332,24 +320,24 @@
       "new_large_object_space": {
         "memorySize": 0,
         "committedMemory": 0,
-        "capacity": 2094912,
+        "capacity": 1047456,
         "used": 0,
-        "available": 2094912
+        "available": 1047456
       }
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 573.062,
-    "kernelCpuSeconds": 26.968,
-    "cpuConsumptionPercent": 14.8449,
-    "maxRss": 2245677056,
+    "userCpuSeconds": 618.89,
+    "kernelCpuSeconds": 28.203,
+    "cpuConsumptionPercent": 22.1002,
+    "maxRss": 2237677568,
     "pageFaults": {
-      "IORequired": 1476536,
+      "IORequired": 1554492,
       "IONotRequired": 0
     },
     "fsActivity": {
-      "reads": 18860,
-      "writes": 112
+      "reads": 19037,
+      "writes": 128
     }
   },
   "libuv": [
@@ -552,7 +540,7 @@
     "npm_package_devDependencies__types_jasmine": "~3.5.0",
     "npm_package_devDependencies__types_jasminewd2": "~2.0.3",
     "npm_package_devDependencies__types_node": "^12.11.1",
-    "npm_package_gitHead": "6c2f96a6f1f01d36d09ba339483aef67899de700",
+    "npm_package_gitHead": "33b389b098e60551ffe8751fe2562e3e88a59373",
     "npm_package_name": "ngxr-advanced",
     "npm_package_private": "true",
     "npm_package_readmeFilename": "README.md",
@@ -610,12 +598,11 @@
     "C:\\WINDOWS\\System32\\RPCRT4.dll",
     "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
     "C:\\WINDOWS\\System32\\PSAPI.DLL",
-    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
     "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
     "C:\\WINDOWS\\System32\\msvcrt.dll",
-    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
-    "C:\\WINDOWS\\System32\\sechost.dll",
     "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
     "C:\\WINDOWS\\System32\\profapi.dll",
     "C:\\WINDOWS\\System32\\USER32.dll",
     "C:\\WINDOWS\\System32\\win32u.dll",
@@ -625,8 +612,9 @@
     "C:\\WINDOWS\\System32\\CRYPT32.dll",
     "C:\\WINDOWS\\System32\\MSASN1.dll",
     "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
     "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
-    "C:\\WINDOWS\\SYSTEM32\\winmmbase.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
     "C:\\WINDOWS\\System32\\cfgmgr32.dll",
     "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
     "C:\\WINDOWS\\System32\\IMM32.DLL",

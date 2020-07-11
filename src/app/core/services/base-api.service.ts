@@ -2,7 +2,7 @@ import { SearchParams } from './../../models/search-params.model';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable} from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, delay } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
 import { v4 as uuidv4 } from "uuid";
 
@@ -33,7 +33,9 @@ export class BaseApiService<T> implements OnDestroy {
     const requestUrl = `${this.baseUrl}${url}`;
     const params = searchParams ? this.getSearchParams(searchParams) : null;
   
-    return this.http.get<T[]>(requestUrl , ({ params }));
+    return this.http.get<T[]>(requestUrl , ({ params })).pipe(
+      delay(3000)
+    );
   }
 
   getById(url, id: string , searchParams?: SearchParams): Observable<T> {
@@ -42,7 +44,9 @@ export class BaseApiService<T> implements OnDestroy {
     const params = searchParams ? this.getSearchParams(searchParams) : null;
   
     // const key = this.mapParamsToKey(url, searchParams);
-    return this.http.get<T>(requestUrl , ({ params })); 
+    return this.http.get<T>(requestUrl , ({ params })).pipe(
+      delay(3000)
+    );; 
   }
 
   save(endPointUrl , requestBody: T){

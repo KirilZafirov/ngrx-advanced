@@ -9,7 +9,7 @@ export const enter = createAction(
 
 export const selectProduct = createAction(
     "[Products Page] Select Product",
-    props<{productId: string}>()
+    props<{productId: string , productDetailsLoading: true}>()
 );
 
 export const clearSelectedProduct = createAction(
@@ -23,7 +23,7 @@ export const createProduct = createAction(
 
 export const addProductPageActive = createAction(
     "[Add Product Component] Add Product page active",
-    props<{isActive: boolean}>()
+    props<{isActive: boolean, productDetailsLoading: boolean}>()
 );
 
 export const updateProduct = createAction(

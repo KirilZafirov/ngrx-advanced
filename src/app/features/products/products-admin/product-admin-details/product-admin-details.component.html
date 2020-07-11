@@ -1,46 +1,52 @@
-<ng-container *ngIf="form">
-  <form [formGroup]="form" (ngSubmit)="submit(form)">
-    <div class="form-group"> 
-        <mat-form-field class="example-full-width">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" formControlName="name">
-        </mat-form-field>
-      </div>
-      <div class="form-group">
-        <mat-form-field class="example-full-width">
-          <mat-label>Description</mat-label>
-          <textarea matInput placeholder="Description" formControlName="description"></textarea>
-        </mat-form-field>
-      </div> 
-      <div class="form-group">
-        <div class="form-group">
-          <mat-form-field class="example-full-width">
-            <mat-label>Price</mat-label>
-            <input matInput placeholder="Price" type="number" formControlName="price">
-          </mat-form-field> 
-        </div> 
-      </div> 
-      <div class="form-group">
-        <label for="currency_type">Currency Type</label> 
-        <select id="currency_type" 
-                class="form-control" 
-                [ngClass]="form.get('currencyType').hasError('required') &&
-                            form.get('currencyType').touched ? 'has-error': ''"
-                formControlName="currencyType">
-          <option *ngFor="let option of currencyType" 
-                  [value]="option.value"
-                  [title]="option.display"
-                  [selected]="selected === option.value">
-            
-                {{option.display}} 
-          </option> 
-        </select>
-      </div> 
+ <ng-container *ngIf="productDetailsLoading$ | async; else productDetailsForm">
+  <mat-spinner></mat-spinner> 
+ </ng-container> 
 
-    <div class="col-md-12">
-      <button mat-raised-button type="submit" class="primary add-edit-btn"
-        [disabled]="form.invalid && !form.dirty">Update</button>
-      <button mat-raised-button type="button" (click)="clear()">Cancel</button>
-    </div>
-  </form>
-</ng-container>
+  <ng-template #productDetailsForm>
+    <ng-container *ngIf="form">
+      <form [formGroup]="form" (ngSubmit)="submit(form)">
+        <div class="form-group"> 
+            <mat-form-field class="example-full-width">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Description" formControlName="description"></textarea>
+            </mat-form-field>
+          </div> 
+          <div class="form-group">
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Price</mat-label>
+                <input matInput placeholder="Price" type="number" formControlName="price">
+              </mat-form-field> 
+            </div> 
+          </div> 
+          <div class="form-group">
+            <label for="currency_type">Currency Type</label> 
+            <select id="currency_type" 
+                    class="form-control" 
+                    [ngClass]="form.get('currencyType').hasError('required') &&
+                                form.get('currencyType').touched ? 'has-error': ''"
+                    formControlName="currencyType">
+              <option *ngFor="let option of currencyType" 
+                      [value]="option.value"
+                      [title]="option.display"
+                      [selected]="selected === option.value">
+                
+                    {{option.display}} 
+              </option> 
+            </select>
+          </div> 
+    
+        <div class="col-md-12">
+          <button mat-raised-button type="submit" class="primary add-edit-btn"
+            [disabled]="form.invalid && !form.dirty">Update</button>
+          <button mat-raised-button type="button" (click)="clear()">Cancel</button>
+        </div>
+      </form>
+    </ng-container>
+  </ng-template>

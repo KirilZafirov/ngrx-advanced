@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { FormStorageDirective } from './directives/index';
 import { UserComponent } from './components/user/user.component';
 import { MaterialModule } from './material.module';
@@ -8,7 +9,7 @@ import { NgModule } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
-const sharedComponents = [UserComponent , FormStorageDirective];
+const sharedComponents = [UserComponent , FormStorageDirective , ConfirmDialogComponent];
    
 
 @NgModule({
