@@ -1,6 +1,6 @@
 <ng-container *ngIf="user; else guest"> 
   <div class="nav-user">
-    <h4>Welcome {{ user.username }}</h4>  
+    <h4>{{ user.username }}</h4>  
     <button mat-icon-button type="button" (click)="onLogout()" matTooltip="Logout">
       <mat-icon>exit_to_app</mat-icon>
     </button> 
@@ -10,7 +10,7 @@
 
 <ng-template #guest> 
   <div class="nav-user">
-    <h4>Welcome Guest</h4>  
+    <h4>Guest</h4>  
     <button mat-icon-button type="button" matTooltip="Login" (click)="onLogin()">
       <mat-icon>login</mat-icon>
     </button> 

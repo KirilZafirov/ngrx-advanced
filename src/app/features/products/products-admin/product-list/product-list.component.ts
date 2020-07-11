@@ -14,6 +14,8 @@ export class ProductListComponent {
     @Output() selected: EventEmitter<string> = new EventEmitter(); 
     @Output() removed: EventEmitter<Product> = new EventEmitter(); 
 
+    displayedColumns: string[] = ['name', 'price', 'description', 'actions'];
+
     constructor() { 
     }
     
