@@ -1,16 +1,17 @@
 
 
-<mat-toolbar color="primary">
-  <button (click)="sidenav.toggle()" mat-mini-fab>
-    <mat-icon>menu</mat-icon>
-  </button>
+<mat-toolbar color="primary"> 
   <button (click)="searchContainer.toggle()" mat-mini-fab>
     <mat-icon>search</mat-icon>
   </button>
   
   <span   [routerLink]="'/'">{{ title }}</span>
-  <span class="nav-spacer"></span>
- 
+  <span class="nav-spacer"></span> 
+  <ng-container *ngFor="let link of links">
+    <span [routerLink]="link.path" >
+      <mat-icon>{{ link.icon }}</mat-icon>  {{ link.label }}
+    </span>
+  </ng-container>
     <app-user
     [user]="user$ | async"
     (logout)="onLogout($event)"
@@ -19,22 +20,8 @@
 </mat-toolbar>
 
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" class="app-sidenav" role="navigation">
-    <nav>
-      <a
-        mat-button
-        class="nav-link"
-        *ngFor="let link of links"
-        [routerLink]="link.path"
-        routerLinkActive="active"
-      >
-        <mat-icon>{{ link.icon }}</mat-icon>
-        {{ link.label }}
-      </a>
-    </nav>
-  </mat-sidenav>
-  <mat-sidenav #searchContainer mode="side" class="app-sidenav" role="search and filter" position="end">
+<mat-sidenav-container> 
+  <mat-sidenav #searchContainer mode="side" class="app-sidenav" role="search and filter" position="start">
     Search
   </mat-sidenav>
   <div class="container-fluid">

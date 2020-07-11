@@ -2,13 +2,14 @@
   <div class="col-md-12">
     <div class="row">
       <div [ngClass]="(isProductFormActive$ | async)? 'col-md-8': 'col-md-12'">
-        <product-list [products]="products$ | async" 
-                      [activeProductId]="activeProductId$ | async"
-                      (selected)="selectProduct($event)" 
-                      (removed)="removeItem($event)">
-        </product-list>
-      </div>
-    
+        <ng-container *ngIf="( products$ | async) as products ; else ghostList;">
+          <product-list [products]="products" 
+                        [activeProductId]="activeProductId$ | async"
+                        (selected)="selectProduct($event)" 
+                        (removed)="removeItem($event)">
+          </product-list>
+        </ng-container>
+      </div> 
       <div  [ngClass]="(isProductFormActive$ | async)? 'col-md-4': ''">
         <router-outlet></router-outlet>
       </div>
@@ -18,3 +19,9 @@
     <button mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
   </div>
 </div>
+
+<ng-template #ghostList>
+  <product-list-ghost>
+
+  </product-list-ghost>
+</ng-template> 
