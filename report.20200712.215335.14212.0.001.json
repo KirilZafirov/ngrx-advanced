@@ -4,10 +4,10 @@
     "reportVersion": 1,
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20200711.160710.16080.0.001.json",
-    "dumpEventTime": "2020-07-11T16:07:10Z",
-    "dumpEventTimeStamp": "1594476430840",
-    "processId": 16080,
+    "filename": "report.20200712.215335.14212.0.001.json",
+    "dumpEventTime": "2020-07-12T21:53:35Z",
+    "dumpEventTimeStamp": "1594583615805",
+    "processId": 14212,
     "cwd": "C:\\dev\\ngrx-advanced",
     "commandLine": [
       "C:\\Program Files\\nodejs\\node.exe",
@@ -51,74 +51,74 @@
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 58346515,
+        "user": 60297156,
         "nice": 0,
-        "sys": 42661890,
-        "idle": 995777343,
-        "irq": 10349875
+        "sys": 43840000,
+        "idle": 1017673578,
+        "irq": 10652703
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 32446546,
+        "user": 33786171,
         "nice": 0,
-        "sys": 13377078,
-        "idle": 1050961765,
-        "irq": 445921
+        "sys": 13763953,
+        "idle": 1074260250,
+        "irq": 456953
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 82347984,
+        "user": 85335750,
         "nice": 0,
-        "sys": 28722015,
-        "idle": 985715375,
-        "irq": 597109
+        "sys": 29623703,
+        "idle": 1006850906,
+        "irq": 614468
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 39622953,
+        "user": 41183593,
         "nice": 0,
-        "sys": 13747218,
-        "idle": 1043415203,
-        "irq": 343421
+        "sys": 14132656,
+        "idle": 1066494109,
+        "irq": 351671
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 72583515,
+        "user": 75234312,
         "nice": 0,
-        "sys": 23820234,
-        "idle": 1000381625,
-        "irq": 595687
+        "sys": 24733000,
+        "idle": 1021843046,
+        "irq": 613328
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 34837109,
+        "user": 36200937,
         "nice": 0,
-        "sys": 13334515,
-        "idle": 1048613750,
-        "irq": 301218
+        "sys": 13757328,
+        "idle": 1071852093,
+        "irq": 309781
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 59581671,
+        "user": 61838750,
         "nice": 0,
-        "sys": 20495750,
-        "idle": 1016707953,
-        "irq": 499921
+        "sys": 21100531,
+        "idle": 1038871078,
+        "irq": 513640
       },
       {
         "model": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 44296109,
+        "user": 45848828,
         "nice": 0,
-        "sys": 16414609,
-        "idle": 1036074656,
-        "irq": 303421
+        "sys": 16958671,
+        "idle": 1059002859,
+        "irq": 312046
       }
     ],
     "networkInterfaces": [
@@ -152,7 +152,7 @@
         "name": "Wi-Fi",
         "internal": false,
         "mac": "18:5e:0f:8d:0b:d0",
-        "address": "192.168.100.6",
+        "address": "192.168.100.7",
         "netmask": "255.255.255.0",
         "family": "IPv4"
       },
@@ -201,71 +201,79 @@
   },
   "nativeStack": [
     {
-      "pc": "0x00007ff77d3c19f9",
+      "pc": "0x00007ff6cf0e19f9",
       "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
     },
     {
-      "pc": "0x00007ff77d3c5e1c",
+      "pc": "0x00007ff6cf0e5e1c",
       "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28316"
     },
     {
-      "pc": "0x00007ff77d3c4dd8",
+      "pc": "0x00007ff6cf0e4dd8",
       "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+24152"
     },
     {
-      "pc": "0x00007ff77d4c34cb",
+      "pc": "0x00007ff6cf1e34cb",
       "symbol": "v8::base::CPU::has_sse+38363"
     },
     {
-      "pc": "0x00007ff77dcd9f4e",
+      "pc": "0x00007ff6cf9f9f4e",
       "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
     },
     {
-      "pc": "0x00007ff77dcc2021",
+      "pc": "0x00007ff6cf9e2021",
       "symbol": "v8::SharedArrayBuffer::Externalize+833"
     },
     {
-      "pc": "0x00007ff77db8e57c",
+      "pc": "0x00007ff6cf8ae57c",
       "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
     },
     {
-      "pc": "0x00007ff77db997d0",
+      "pc": "0x00007ff6cf8b97d0",
       "symbol": "v8::internal::Heap::ProtectUnprotectedMemoryChunks+1312"
     },
     {
-      "pc": "0x00007ff77db962f4",
+      "pc": "0x00007ff6cf8b62f4",
       "symbol": "v8::internal::Heap::PageFlagsAreConsistent+3204"
     },
     {
-      "pc": "0x00007ff77db8bb13",
+      "pc": "0x00007ff6cf8abb13",
       "symbol": "v8::internal::Heap::CollectGarbage+1283"
     },
     {
-      "pc": "0x00007ff77db8a184",
+      "pc": "0x00007ff6cf8aa184",
       "symbol": "v8::internal::Heap::AddRetainedMap+2452"
     },
     {
-      "pc": "0x00007ff77dbab36d",
+      "pc": "0x00007ff6cf8cb36d",
       "symbol": "v8::internal::Factory::NewFillerObject+61"
     },
     {
-      "pc": "0x00007ff77d910c51",
+      "pc": "0x00007ff6cf630c51",
       "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+1665"
     },
     {
-      "pc": "0x00007ff77e124ddd",
+      "pc": "0x00007ff6cfe44ddd",
       "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+546637"
     },
     {
-      "pc": "0x000003ceefd54a4e",
+      "pc": "0x00007ff6cfe7f932",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+787106"
+    },
+    {
+      "pc": "0x00007ff6cfe307a3",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+463123"
+    },
+    {
+      "pc": "0x000003d7c0fafdd4",
       "symbol": ""
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 2151976960,
-    "totalCommittedMemory": 2151976960,
-    "usedMemory": 2127199128,
-    "availableMemory": 47679080,
+    "totalMemory": 2154225664,
+    "totalCommittedMemory": 2154225664,
+    "usedMemory": 2126428416,
+    "availableMemory": 47818352,
     "memoryLimit": 2197815296,
     "heapSpaces": {
       "read_only_space": {
@@ -276,38 +284,38 @@
         "available": 0
       },
       "new_space": {
-        "memorySize": 2097152,
-        "committedMemory": 2097152,
-        "capacity": 1047456,
-        "used": 273512,
-        "available": 773944
+        "memorySize": 4194304,
+        "committedMemory": 4194304,
+        "capacity": 2094912,
+        "used": 104384,
+        "available": 1990528
       },
       "old_space": {
-        "memorySize": 2011054080,
-        "committedMemory": 2011054080,
-        "capacity": 1999157744,
-        "used": 1999138400,
-        "available": 19344
+        "memorySize": 2014461952,
+        "committedMemory": 2014461952,
+        "capacity": 2002078976,
+        "used": 2001935696,
+        "available": 143280
       },
       "code_space": {
-        "memorySize": 8294400,
-        "committedMemory": 8294400,
-        "capacity": 7285152,
-        "used": 7285152,
+        "memorySize": 7770112,
+        "committedMemory": 7770112,
+        "capacity": 6930912,
+        "used": 6930912,
         "available": 0
       },
       "map_space": {
-        "memorySize": 10227712,
-        "committedMemory": 10227712,
-        "capacity": 1048080,
-        "used": 1048080,
+        "memorySize": 10489856,
+        "committedMemory": 10489856,
+        "capacity": 1040800,
+        "used": 1040800,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 119992320,
-        "committedMemory": 119992320,
-        "capacity": 119418392,
-        "used": 119418392,
+        "memorySize": 116998144,
+        "committedMemory": 116998144,
+        "capacity": 116381032,
+        "used": 116381032,
         "available": 0
       },
       "code_large_object_space": {
@@ -320,24 +328,24 @@
       "new_large_object_space": {
         "memorySize": 0,
         "committedMemory": 0,
-        "capacity": 1047456,
+        "capacity": 2094912,
         "used": 0,
-        "available": 1047456
+        "available": 2094912
       }
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 618.89,
-    "kernelCpuSeconds": 28.203,
-    "cpuConsumptionPercent": 22.1002,
-    "maxRss": 2237677568,
+    "userCpuSeconds": 512.078,
+    "kernelCpuSeconds": 28.14,
+    "cpuConsumptionPercent": 16.1452,
+    "maxRss": 2248450048,
     "pageFaults": {
-      "IORequired": 1554492,
+      "IORequired": 1398424,
       "IONotRequired": 0
     },
     "fsActivity": {
-      "reads": 19037,
-      "writes": 128
+      "reads": 20083,
+      "writes": 110
     }
   },
   "libuv": [
@@ -355,6 +363,8 @@
     "dp0": "C:\\dev\\ngrx-advanced\\node_modules\\.bin\\",
     "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
     "FORCE_COLOR": "3",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
     "GIT_ASKPASS": "c:\\Users\\kiril.zafirov\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
     "HOME": "C:\\Users\\kiril.zafirov",
     "HOMEDRIVE": "C:",
@@ -540,7 +550,7 @@
     "npm_package_devDependencies__types_jasmine": "~3.5.0",
     "npm_package_devDependencies__types_jasminewd2": "~2.0.3",
     "npm_package_devDependencies__types_node": "^12.11.1",
-    "npm_package_gitHead": "33b389b098e60551ffe8751fe2562e3e88a59373",
+    "npm_package_gitHead": "99b1c1c3eaa7dc279c333e2d936a7435be421493",
     "npm_package_name": "ngxr-advanced",
     "npm_package_private": "true",
     "npm_package_readmeFilename": "README.md",
@@ -597,10 +607,11 @@
     "C:\\WINDOWS\\System32\\WS2_32.dll",
     "C:\\WINDOWS\\System32\\RPCRT4.dll",
     "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
-    "C:\\WINDOWS\\System32\\PSAPI.DLL",
     "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
     "C:\\WINDOWS\\System32\\ADVAPI32.dll",
     "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
     "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
     "C:\\WINDOWS\\System32\\sechost.dll",
     "C:\\WINDOWS\\System32\\profapi.dll",
@@ -612,9 +623,8 @@
     "C:\\WINDOWS\\System32\\CRYPT32.dll",
     "C:\\WINDOWS\\System32\\MSASN1.dll",
     "C:\\WINDOWS\\System32\\bcrypt.dll",
-    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
     "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
-    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\WINDOWS\\SYSTEM32\\winmmbase.dll",
     "C:\\WINDOWS\\System32\\cfgmgr32.dll",
     "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
     "C:\\WINDOWS\\System32\\IMM32.DLL",

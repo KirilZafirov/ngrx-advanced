@@ -34,7 +34,7 @@ export const productsReducer = createReducer(
         activeProductId: null,
         productDetailsLoading: false
       };
-    }),
+    }), 
     on(ProductsPageActions.selectProduct, (state, action) => {
       return {
         ...state,

@@ -34,7 +34,7 @@ export class BaseApiService<T> implements OnDestroy {
     const params = searchParams ? this.getSearchParams(searchParams) : null;
   
     return this.http.get<T[]>(requestUrl , ({ params })).pipe(
-      delay(3000)
+      delay(0)
     );
   }
 
@@ -45,7 +45,7 @@ export class BaseApiService<T> implements OnDestroy {
   
     // const key = this.mapParamsToKey(url, searchParams);
     return this.http.get<T>(requestUrl , ({ params })).pipe(
-      delay(3000)
+      delay(0)
     );; 
   }
 

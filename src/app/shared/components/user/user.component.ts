@@ -10,8 +10,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 })
 export class UserComponent { 
 
-  @Input() user: User | null;
-
+  @Input() user: User | null; 
   @Output() logout: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   @Output() login: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 

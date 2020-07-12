@@ -35,7 +35,7 @@ const routes: Routes = [
       pathMatch: 'full',
     },
     {
-      path: '',
+      path: 'home',
       loadChildren:() =>import('./features/landing-page/landing-page.module').then(m => m.LandingPageModule) ,
       pathMatch: 'full',
     },

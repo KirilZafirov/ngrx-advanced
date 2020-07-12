@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Product } from './../services/products-data.service';
-import { Component } from '@angular/core'; 
+import { Component, OnDestroy, OnInit } from '@angular/core'; 
 import {  Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromRoot from "src/app/shared/state";
@@ -11,7 +11,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/shared/compo
 @Component({
   templateUrl: './products-admin-shell.component.html'
 })
-export class ProductsAdminShellComponent {
+export class ProductsAdminShellComponent implements OnInit , OnDestroy {
   searchParams: SearchParams = {
     all: true
   };
@@ -50,6 +50,9 @@ export class ProductsAdminShellComponent {
   addProduct() {
     this.router.navigateByUrl('/products/add-product');
   } 
+
+  ngOnDestroy() {
+  }
 
   confirmDialog(item: Product): void {
     const message = `Are you sure you want to do this?`;

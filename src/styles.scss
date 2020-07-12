@@ -5,12 +5,12 @@ html {
     height: 100%;
   }
   
-  body {
-    margin: 0;
-    height: 100%;
-    display: flex;
-  }
-  
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+}
+   
   mat-toolbar-row {
     justify-content: space-between;
   }
@@ -33,21 +33,17 @@ html {
   }
   
   mat-sidenav {
-    width: 320px;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+    min-width: 300px;
+    // width: 15%;
   }
   
-  mat-sidenav a {
-    box-sizing: border-box;
-    display: block;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 47px;
-    text-decoration: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    padding: 0 16px;
-    position: relative;
+  mat-toolbar {
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+      0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+    z-index: 1;
   }
+ 
   
   .icon-20 {
     font-size: 20px;
@@ -101,14 +97,18 @@ html {
   
 
 .nav {
-
-    &-user {
-        display: inline-flex;
-        >h4 {
-            align-self: center;
-        } 
-    }
+    
     &-spacer {
         flex: 1 1 auto;
     }
+}
+ 
+.active-link-item {
+  background-color: #465ee7 !important;
+  color: #dadffa !important;
+} 
+
+.active-link-menu {
+  background-color: #dadffa !important;
+  color: #465ee7 !important;
 }

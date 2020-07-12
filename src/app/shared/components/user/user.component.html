@@ -1,18 +1,16 @@
-<ng-container *ngIf="user; else guest"> 
+<ng-container *ngIf="user; else guest">
   <div class="nav-user">
-    <h4>{{ user.username }}</h4>  
-    <button mat-icon-button type="button" (click)="onLogout()" matTooltip="Logout">
-      <mat-icon>exit_to_app</mat-icon>
-    </button> 
+    <a mat-list-item>
+      <h3 matLine>{{ user.username }}</h3>
+      <mat-icon (click)="onLogout()">exit_to_app</mat-icon>
+    </a>
   </div>
-    
 </ng-container>
-
-<ng-template #guest> 
+<ng-template #guest>
   <div class="nav-user">
-    <h4>Guest</h4>  
-    <button mat-icon-button type="button" matTooltip="Login" (click)="onLogin()">
-      <mat-icon>login</mat-icon>
-    </button> 
-  </div> 
+    <a mat-list-item>
+      <h3 matLine>Guest</h3>
+      <mat-icon (click)="onLogin()">login</mat-icon>
+    </a>
+  </div>
 </ng-template>

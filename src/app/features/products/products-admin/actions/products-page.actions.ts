@@ -5,7 +5,7 @@ import { createAction, props } from '@ngrx/store';
 export const enter = createAction(
     "[Products Page] Enter",
     props<{searchParams: SearchParams}>()
-);
+); 
 
 export const selectProduct = createAction(
     "[Products Page] Select Product",

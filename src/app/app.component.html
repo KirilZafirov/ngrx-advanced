@@ -1,31 +1,52 @@
+<mat-toolbar color="primary">
+  <!-- <ng-container *ngIf="isMobile else tabletOrDesktop"> -->
+    <button (click)="menu.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  <!-- </ng-container> -->
 
-
-<mat-toolbar color="primary"> 
-  <button (click)="menu.toggle()" mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
-  
-  <span   [routerLink]="'/'">{{ title }}</span>
-  <span class="nav-spacer"></span>  
-    <app-user
-    [user]="user$ | async"
-    (logout)="onLogout($event)"
-    (login)="onLogin($event)">
-    </app-user> 
+ <!-- <ng-template #tabletOrDesktop> -->
+  <ng-container *ngFor="let link of links">
+    <button mat-button [routerLink]="link.path" routerLinkActive="active-link-menu">
+      <mat-icon> {{link.icon}}</mat-icon>
+      <span>{{link.label}}</span>
+    </button>
+  </ng-container>
+  <span class="nav-spacer"></span>
+  <app-user [user]="user$ | async" (logout)="onLogout($event)" (login)="onLogin($event)">
+  </app-user>
+ <!-- </ng-template> -->
 </mat-toolbar>
 
 
-<mat-sidenav-container> 
-  <mat-sidenav #menu mode="side" class="app-sidenav" role="search and filter" position="start">
-    <ng-container *ngFor="let link of links">
-      <a mat-stroked-button color="primary" [routerLink]="link.path" >
-        {{ link.label }}
-      </a>
-    </ng-container>
+<mat-sidenav-container>
+  <mat-sidenav #menu  role="menu items" position="start">
+    <mat-toolbar>
+      Links
+      <span class="nav-spacer"></span>
+      <button mat-icon-button (click)="menu.close()" matTooltip="Close sidenav" matTooltipPosition="right">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <ng-container *ngFor="let link of links">
+        <a mat-list-item [routerLink]="link.path" routerLinkActive="active-link-item">
+          <mat-icon> {{link.icon}}</mat-icon>
+          <h3 matLine> {{link.label}}</h3>
+          <!-- <p matLine>The demo itself</p> -->
+        </a> 
+      </ng-container> 
+      <span class="nav-spacer"></span>
+      <app-user [user]="user$ | async" (logout)="onLogout($event)" (login)="onLogin($event)">
+      </app-user>
+      <!-- <h3 matSubheader>Other</h3>  -->
+    </mat-nav-list>  
   </mat-sidenav>
   <div class="container-fluid">
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>
+
+
 
 
