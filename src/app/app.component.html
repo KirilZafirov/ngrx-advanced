@@ -29,17 +29,19 @@
       </button>
     </mat-toolbar>
     <mat-nav-list>
-      <ng-container *ngFor="let link of links">
+      <ng-container *ngFor="let link of links ; last as last">
         <a mat-list-item [routerLink]="link.path" routerLinkActive="active-link-item">
           <mat-icon> {{link.icon}}</mat-icon>
           <h3 matLine> {{link.label}}</h3>
           <!-- <p matLine>The demo itself</p> -->
+          <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
         </a> 
       </ng-container> 
+      <mat-divider></mat-divider>
       <span class="nav-spacer"></span>
+      <h3 matSubheader>User</h3> 
       <app-user [user]="user$ | async" (logout)="onLogout($event)" (login)="onLogin($event)">
-      </app-user>
-      <!-- <h3 matSubheader>Other</h3>  -->
+      </app-user> 
     </mat-nav-list>  
   </mat-sidenav>
   <div class="container-fluid">

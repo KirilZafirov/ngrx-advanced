@@ -15,7 +15,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 export class AppComponent {
   user$: Observable<User | null>;
   links = [
-    { path: "/home", icon: "dashboard", label: "Home" },
+    { path: "/home", icon: "home", label: "Home" },
     { path: "/products", icon: "view_list", label: "Products" },
     ];
 
