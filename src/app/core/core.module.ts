@@ -1,3 +1,4 @@
+import { ViewService } from './services/view.service';
 import { IndexedDBStorageService } from './services/indexedDb-storage.service';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,6 +22,7 @@ import { HandleHttpErrorInterceptor } from './interceptors/handle-http-error.int
     AuthGuard,
     NotificationService, 
     BaseApiService, 
+    ViewService ,
     AuthService,
     SessionStorageService,
     IndexedDBStorageService,

@@ -1,6 +1,41 @@
 
         <div class="landing-page-content">
-            <div>
-                test
-            </div>
+            <ng-container *ngIf="viewService.viewPortSizes$ | async as viewPortSizes">
+                <ng-container *ngIf="viewPortSizes.isXSmall">
+                    <mat-grid-list cols="1" rowHeight="4:1">
+                        <ng-container *ngFor="let card of cards ;  let i = index">
+                            <mat-grid-tile>i</mat-grid-tile> 
+                        </ng-container> 
+                    </mat-grid-list>
+                </ng-container>
+                <ng-container *ngIf="viewPortSizes.isSmall">
+                    <mat-grid-list cols="2" rowHeight="4:1">
+                        <ng-container *ngFor="let card of cards ;  let i = index">
+                            <mat-grid-tile>i</mat-grid-tile> 
+                        </ng-container> 
+                    </mat-grid-list>
+                </ng-container>
+                <ng-container *ngIf="viewPortSizes.isMedium">
+                    <mat-grid-list cols="3" rowHeight="2:1">
+                        <ng-container *ngFor="let card of cards ;  let i = index">
+                            <mat-grid-tile>i</mat-grid-tile> 
+                        </ng-container> 
+                    </mat-grid-list>
+                </ng-container>
+                <ng-container *ngIf="viewPortSizes.isLarge">
+                    <mat-grid-list cols="4" rowHeight="1:1">
+                        <ng-container *ngFor="let card of cards ;  let i = index">
+                            <mat-grid-tile>i</mat-grid-tile> 
+                        </ng-container> 
+                    </mat-grid-list>
+                </ng-container>
+                <ng-container *ngIf="viewPortSizes.isXLarge">
+                    <mat-grid-list cols="6" rowHeight="1:1">
+                        <ng-container *ngFor="let card of cards ;  let i = index">
+                            <mat-grid-tile>i</mat-grid-tile> 
+                        </ng-container> 
+                    </mat-grid-list>
+                </ng-container> 
+            </ng-container>
         </div>
+        

@@ -26,6 +26,10 @@
         height: 40px;
       }
     }
-  }
-  
- 
+  } 
+ .mat-drawer {
+  background-image: linear-gradient(to right bottom, #ebf3fa, #e9f1fb, #e7effb, #e6edfc, #e6ebfc, #dfe5fc, #d9dffc, #d3d9fc, #c1cffd, #adc6fd, #95bdfe, #77b5fe) !important;
+ }
+.mat-drawer-container {
+  background-image: linear-gradient(to right bottom, #ebf3fa, #e9f1fb, #e7effb, #e6edfc, #e6ebfc, #dfe5fc, #d9dffc, #d3d9fc, #c1cffd, #adc6fd, #95bdfe, #77b5fe) !important;
+}
