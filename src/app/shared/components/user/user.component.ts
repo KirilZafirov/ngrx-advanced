@@ -14,6 +14,7 @@ export class UserComponent {
   @Output() logout: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   @Output() login: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
+  userLink = '/user';
   constructor() {
   }
 

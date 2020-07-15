@@ -1,16 +1,13 @@
-<ng-container *ngIf="user; else guest">
-  <div class="nav-user">
-    <a mat-list-item>
+<ng-container *ngIf="user; else guest"> 
+    <a mat-list-item [routerLink]="userLink" routerLinkActive="active-link-item">
       <h3 matLine>{{ user.username }}</h3>
       <mat-icon (click)="onLogout()">exit_to_app</mat-icon>
     </a>
-  </div>
 </ng-container>
-<ng-template #guest>
-  <div class="nav-user">
-    <a mat-list-item>
+<ng-template #guest> 
+    <a mat-list-item [routerLink]="userLink" routerLinkActive="active-link-item">
       <h3 matLine>Guest</h3>
       <mat-icon (click)="onLogin()">login</mat-icon>
-    </a>
-  </div>
+    </a> 
 </ng-template>
+ 

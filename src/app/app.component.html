@@ -1,11 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z8">
-  <!-- <ng-container *ngIf="isMobile else tabletOrDesktop"> -->
-    <button (click)="menu.toggle()" mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-  <!-- </ng-container> -->
-
- <!-- <ng-template #tabletOrDesktop> -->
+<mat-toolbar color="primary" class="mat-elevation-z8"> 
   <ng-container *ngFor="let link of links">
     <button mat-button [routerLink]="link.path" routerLinkActive="active-link-menu">
       <mat-icon> {{link.icon}}</mat-icon>
@@ -13,14 +6,30 @@
     </button>
   </ng-container>
   <span class="nav-spacer"></span>
-  <app-user [user]="user$ | async" (logout)="onLogout($event)" (login)="onLogin($event)">
-  </app-user>
- <!-- </ng-template> -->
+  <ng-container *ngIf="user$ | async as user; else guest">
+    <button mat-button [routerLink]="'/user'" routerLinkActive="active-link-menu">
+      <mat-icon>person</mat-icon>
+      <span>{{user.username}}</span>
+    </button>
+  </ng-container>
+  <ng-template #guest>
+    <button mat-button [routerLink]="'/user'" routerLinkActive="active-link-menu">
+      <span>Guest</span>
+      <mat-icon (click)="onLogin($event)">login</mat-icon>
+    </button>
+  </ng-template>
 </mat-toolbar>
+<ng-container *ngIf="viewService.viewPortSizes$ | async as viewPortSizes">
+  <mat-toolbar color="accent" *ngIf="viewPortSizes.isSmall || viewPortSizes.isXSmall">
+    <button (click)="menu.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar> 
+</ng-container>
 
 
 <mat-sidenav-container>
-  <mat-sidenav #menu  role="menu items" position="start">
+  <mat-sidenav #menu role="menu items" position="start">
     <mat-toolbar>
       Links
       <span class="nav-spacer"></span>
@@ -35,20 +44,16 @@
           <h3 matLine> {{link.label}}</h3>
           <!-- <p matLine>The demo itself</p> -->
           <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-        </a> 
-      </ng-container> 
+        </a>
+      </ng-container>
       <mat-divider></mat-divider>
       <span class="nav-spacer"></span>
-      <h3 matSubheader>User</h3> 
+      <h3 matSubheader>User</h3>
       <app-user [user]="user$ | async" (logout)="onLogout($event)" (login)="onLogin($event)">
-      </app-user> 
-    </mat-nav-list>  
+      </app-user>
+    </mat-nav-list>
   </mat-sidenav>
   <div class="container-fluid">
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>
-
-
-
-

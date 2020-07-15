@@ -1,7 +1,8 @@
+import { CardListComponent } from './card-list/card-list.component';
+import { ItemCardComponent } from './item-card/item-card.component';
 import { SharedModule } from './../../shared/shared.module';
 import { LandingPageComponent } from './landing-page.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 
 
@@ -10,7 +11,11 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
     SharedModule,
     LandingPageRoutingModule,
   ],
-  declarations: [LandingPageComponent],
+  declarations: [
+    LandingPageComponent,
+    ItemCardComponent,
+    CardListComponent
+  ],
   entryComponents: [],
   providers: []
 })

@@ -1,3 +1,4 @@
+import { ViewService } from './core/services/view.service';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './shared/models/user.model';
@@ -19,7 +20,8 @@ export class AppComponent {
     { path: "/products", icon: "view_list", label: "Products" },
     ];
 
-  constructor(private store: Store<State>, private router: Router ,private breakpointObserver: BreakpointObserver) {
+  constructor(private store: Store<State>, 
+    private router: Router ,public viewService: ViewService) {
      
     const userString = localStorage.getItem("auth");
 
@@ -37,8 +39,5 @@ export class AppComponent {
   onLogin(event: boolean) {
     this.router.navigateByUrl('/login');
   }
- 
-  get isMobile() {
-    return this.breakpointObserver.isMatched('(max-width: 767px)');
-  }
+  
 }

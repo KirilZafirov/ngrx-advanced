@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { RouterModule } from '@angular/router';
 
 
 const sharedComponents = [UserComponent , FormStorageDirective , ConfirmDialogComponent];
@@ -17,7 +18,8 @@ const sharedComponents = [UserComponent , FormStorageDirective , ConfirmDialogCo
       CommonModule , 
       FormsModule,
       ReactiveFormsModule,
-      MaterialModule
+      MaterialModule,
+      RouterModule
     ],
     declarations: [  ...sharedComponents ],
     exports: [
