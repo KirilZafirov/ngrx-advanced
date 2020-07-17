@@ -37,4 +37,11 @@ export class LandingPageComponent implements OnDestroy {
     ngOnDestroy(){
 
     }
+
+    view: boolean = false;
+    
+    toggleView() {
+      this.view = !this.view;
+    }
+
 }

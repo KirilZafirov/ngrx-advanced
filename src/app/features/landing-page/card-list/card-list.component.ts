@@ -1,6 +1,7 @@
  
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core'; 
 import { CardItemModel } from '../../models/card-item-model';
+import { ItemViewType } from '../../models/item-view-type.model';
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
@@ -9,7 +10,7 @@ import { CardItemModel } from '../../models/card-item-model';
 })
 export class CardListComponent {
 
-    @Input() list: CardItemModel[];
+    @Input() list: CardItemModel[]; 
     
     constructor() { 
       

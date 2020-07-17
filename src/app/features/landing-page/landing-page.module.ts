@@ -1,3 +1,4 @@
+ 
 import { CardListComponent } from './card-list/card-list.component';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { SharedModule } from './../../shared/shared.module';
@@ -14,7 +15,7 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
   declarations: [
     LandingPageComponent,
     ItemCardComponent,
-    CardListComponent
+    CardListComponent 
   ],
   entryComponents: [],
   providers: []

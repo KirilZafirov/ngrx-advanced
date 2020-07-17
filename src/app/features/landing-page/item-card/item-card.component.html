@@ -1,11 +1,13 @@
 
-<mat-card [ngClass]="item.class" tabindex="-1">
+<mat-card [ngClass]="item.class" tabindex="0">
     <mat-card-title-group>
         <mat-card-title>{{item.titleGroup.cardTitle}}</mat-card-title>
         <mat-card-subtitle>{{item.titleGroup.cardSubtitle}}</mat-card-subtitle>
         <img mat-card-avatar mat-card-sm-image [ngClass]="item.avatarClass">
     </mat-card-title-group>
     <img mat-card-image 
+         tabindex="1"
+        class="main-card-img"
         [src]="item.imgSrc.src"
         [alt]="item.imgSrc.alt">
     <mat-card-content> 

@@ -1,8 +1,18 @@
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3" *ngIf="view">
         
     </div>
-    <div class="col-md-9">
+    <div [ngClass]="view ? 'col-md-9' : 'col-md-12'">
+        <mat-toolbar class="mat-elevation-z8">
+            <button mat-icon-button (click)="toggleView()" type="button">
+                <mat-icon>search</mat-icon>
+            </button>
+            <span class="nav-spacer"></span>
+            <button mat-icon-button (click)="toggleView()" type="button">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-toolbar>
+
         <app-card-list [list]="cards">
 
         </app-card-list>
