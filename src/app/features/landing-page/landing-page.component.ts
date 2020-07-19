@@ -1,7 +1,9 @@
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { CardItemModel } from './../models/card-item-model';
 import { ViewService } from './../../core/services/view.service'; 
 
 import { Component, OnDestroy } from '@angular/core'; 
+import { switchMap, map } from 'rxjs/operators';
 @Component({
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
@@ -34,8 +36,23 @@ export class LandingPageComponent implements OnDestroy {
         avatarClass:'card-avatar-image'
     }
     cards = new Array(10).fill(this.cardItem);
+
+    filteredOptions: Observable<string[]>;
+
+    
     ngOnDestroy(){
 
     } 
 
+    makeRequest(params: string) {
+      this.filteredOptions = of(['One' , 'Two' , 'Three', 'One' , 'Two' , 'Three' , 'One' , 'Two' , 'Three' , 'One' , 'Two' , 'Three']).pipe(
+        switchMap((options: string[]) => of(this._filter(params, options)))
+      );
+    }
+
+    private _filter(value: string , options: string[]): string[] {
+      const filterValue = value.toLowerCase();
+
+      return options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
 }

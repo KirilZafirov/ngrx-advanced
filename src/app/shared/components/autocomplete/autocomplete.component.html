@@ -1,0 +1,16 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="search item"
+             matInput
+             [formControl]="control"
+             [matAutocomplete]="auto">
+             
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" role="combobox">
+        <mat-option *ngFor="let option of filteredOptions" [value]="option" active>
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
