@@ -1,20 +1,41 @@
-<div class="row">
-    <div class="col-md-3" *ngIf="view">
-        
+
+<mat-sidenav-container>
+    <div class="row"> 
+        <div class="col-md-12">
+            <mat-toolbar>
+                <button mat-icon-button (click)="search.toggle()" type="button" color="primary">
+                    <mat-icon>search</mat-icon> 
+                </button>
+                <span class="nav-spacer"></span>
+                <!-- <button mat-icon-button (click)="toggleView()" type="button">
+                    <mat-icon>search</mat-icon>
+                </button> -->
+            </mat-toolbar> 
+        </div>
     </div>
-    <div [ngClass]="view ? 'col-md-9' : 'col-md-12'">
-        <mat-toolbar class="mat-elevation-z8">
-            <button mat-icon-button (click)="toggleView()" type="button">
-                <mat-icon>search</mat-icon>
-            </button>
+    <mat-sidenav #search role="search"> 
+      
+        <div style="display: flex;">
             <span class="nav-spacer"></span>
-            <button mat-icon-button (click)="toggleView()" type="button">
-                <mat-icon>search</mat-icon>
-            </button>
-        </mat-toolbar>
+            <button mat-icon-button (click)="search.close()" matTooltip="Close sidenav" matTooltipClass="custom-tooltip" matTooltipPosition="right">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+            </button> 
+            
+        </div> 
+      <mat-nav-list> 
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Search</mat-label> 
+              <mat-icon matPrefix>search</mat-icon>
+              <input type="text" matInput  #message maxlength="256"  placeholder="I am searching for...">
+              <mat-hint align="start"><strong>Car , Model , Producer , Year</strong> </mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+          </form> 
+        <mat-divider></mat-divider> 
+      </mat-nav-list>
+    </mat-sidenav> 
+    <app-card-list [list]="cards">
 
-        <app-card-list [list]="cards">
-
-        </app-card-list>
-    </div>
-</div>
+    </app-card-list>
+  </mat-sidenav-container>

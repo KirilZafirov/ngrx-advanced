@@ -26,6 +26,13 @@
       "name": "testing",
       "description": "sdfsfsdfsd",
       "price": 34
+    },
+    {
+      "name": "Chasa za kafe",
+      "description": "asdjhakdhsalkjdhsalkjdhaskjdhjkashdkjlasdsajkhabdkljasgdkljashgdlkasdsa",
+      "price": 50,
+      "currencyType": "EUR",
+      "id": "b0c04ba3-ec75-4362-8260-b1c4d358c147"
     }
   ]
 }

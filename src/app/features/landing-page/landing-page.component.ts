@@ -36,12 +36,6 @@ export class LandingPageComponent implements OnDestroy {
     cards = new Array(10).fill(this.cardItem);
     ngOnDestroy(){
 
-    }
-
-    view: boolean = false;
-    
-    toggleView() {
-      this.view = !this.view;
-    }
+    } 
 
 }
