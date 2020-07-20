@@ -1,3 +1,4 @@
+import { WithLoadingPipe } from './pipes/with-loading.pipe';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { ConfirmDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { FormStorageDirective } from './directives/index';
@@ -11,7 +12,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 
 
-const sharedComponents = [UserComponent , FormStorageDirective , ConfirmDialogComponent , AutocompleteComponent];
+const sharedComponents = [UserComponent , FormStorageDirective , ConfirmDialogComponent , AutocompleteComponent , WithLoadingPipe];
    
 
 @NgModule({

@@ -237,6 +237,49 @@ $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 // );
 // $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 
+@mixin mat-option-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .mat-option {
+    color: mat-color($foreground, text);
+
+    &:hover:not(.mat-option-disabled),
+    &:focus:not(.mat-option-disabled) {
+      background: mat-color($background, hover);
+    }
+
+    // In multiple mode there is a checkbox to show that the option is selected.
+    &.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
+      background: mat-color($primary, hover);
+    }
+
+    &.mat-active {
+      background: mat-color( $primary, hover);
+      color: mat-color($accent, text);
+    }
+
+    &.mat-option-disabled {
+      color: mat-color($foreground, hint-text);
+    }
+  }
+
+  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: mat-color($primary, text);
+  }
+
+  .mat-accent .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: mat-color($accent, text);
+  }
+
+  .mat-warn .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: mat-color($warn, text);
+  }
+}
+ 
 $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 

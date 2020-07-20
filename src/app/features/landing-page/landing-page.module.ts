@@ -1,3 +1,4 @@
+import { LandingPageService } from './services/landing-page.service';
  
 import { CardListComponent } from './card-list/card-list.component';
 import { ItemCardComponent } from './item-card/item-card.component';
@@ -18,7 +19,7 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
     CardListComponent 
   ],
   entryComponents: [],
-  providers: []
+  providers: [LandingPageService]
 })
 export class LandingPageModule { }
 

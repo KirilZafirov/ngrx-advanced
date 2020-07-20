@@ -3,17 +3,19 @@ import { CardItemModel } from './../models/card-item-model';
 import { ViewService } from './../../core/services/view.service'; 
 
 import { Component, OnDestroy } from '@angular/core'; 
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, filter } from 'rxjs/operators';
+import { LandingPageService } from './services/landing-page.service';
 @Component({
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnDestroy {
 
-    constructor(public viewService: ViewService ) { 
+    constructor(public viewService: ViewService , private landingPageService: LandingPageService) { 
       
     } 
  
+    query: BehaviorSubject<string> = new BehaviorSubject<string>(null);
     cardItem: CardItemModel = {
       titleGroup: {
         cardTitle:'Shiba Inu',
@@ -40,19 +42,19 @@ export class LandingPageComponent implements OnDestroy {
     filteredOptions: Observable<string[]>;
 
     
+    ngOnInit() {
+      this.filteredOptions = this.query.pipe(
+        filter(query => !!query),
+        switchMap((query) => this.landingPageService.filteredItems(query))
+      );
+    }
+
     ngOnDestroy(){
 
     } 
 
     makeRequest(params: string) {
-      this.filteredOptions = of(['One' , 'Two' , 'Three', 'One' , 'Two' , 'Three' , 'One' , 'Two' , 'Three' , 'One' , 'Two' , 'Three']).pipe(
-        switchMap((options: string[]) => of(this._filter(params, options)))
-      );
+      this.query.next(params);
     }
 
-    private _filter(value: string , options: string[]): string[] {
-      const filterValue = value.toLowerCase();
-
-      return options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-  }
 }

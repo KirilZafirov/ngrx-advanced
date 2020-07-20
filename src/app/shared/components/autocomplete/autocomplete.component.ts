@@ -1,7 +1,7 @@
 import { Observable, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { startWith, map, debounce, debounceTime, filter, tap, takeUntil } from 'rxjs/operators';
+import { startWith, map, debounce, debounceTime, filter, tap, takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'app-autocomplete',
@@ -26,9 +26,10 @@ export class AutocompleteComponent implements OnInit {
 
     ngOnInit(): void {
         this.control.valueChanges.pipe(
-            startWith(''),
-            filter(v => v.length > 2),
+            startWith(''), 
             debounceTime(500),
+            distinctUntilChanged(),
+            filter(v => v.length > 2),
             tap((params) => this.changeParams.emit(params)),
             takeUntil(this.destroy$)
         ).subscribe();
