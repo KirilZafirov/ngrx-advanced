@@ -249,7 +249,7 @@ $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 
     &:hover:not(.mat-option-disabled),
     &:focus:not(.mat-option-disabled) {
-      background: mat-color($background, hover);
+      background: mat-color($foreground, hover);
     }
 
     // In multiple mode there is a checkbox to show that the option is selected.
@@ -258,8 +258,8 @@ $theme-warn: mat-palette($mat-warn, main, lighter, darker);
     }
 
     &.mat-active {
-      background: mat-color( $primary, hover);
-      color: mat-color($accent, text);
+      background: mat-color( $accent, hover);
+      color: mat-color($warn, text);
     }
 
     &.mat-option-disabled {
