@@ -15,36 +15,78 @@
      
       <div class="col-md-12">
         <div class="row align-items-center">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
           </div> 
-          <div class="col-md-1 ml-md-auto"> 
-            <button mat-icon-button (click)="search.toggle()" type="button" color="primary">
-              <mat-icon>search</mat-icon> 
-          </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
           </div> 
         </div>
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
+            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          </div> 
+          <div class="col-md-4">
             <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
           </div> 
         </div>
-        <mat-toolbar>
+        <div class="row">
+          <div class="col-md-4">
+            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          </div> 
+          <div class="col-md-4">
+            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          </div> 
+        </div>
+        <!-- <mat-toolbar>
             
             <span class="nav-spacer"></span> 
             <button mat-icon-button (click)="search.toggle()" type="button" color="primary">
               <mat-icon>search</mat-icon> 
           </button>
-        </mat-toolbar> 
+        </mat-toolbar>  -->
     </div>
     </div> 
   </div>
  
+  <div class="lp-section-2">
+    <div class="row"> 
+     
+      <div class="col-md-4">
+        <div class="lp-heading-2">
+          <h1>
+           Get <br/>
+           <b>NEW</b>
+           <br/> 
+            Pay 
+           <br/> 
+           <b>OLD</b> 
+          </h1>
+        </div> 
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          </div> 
+        </div> 
+    </div>
+
+
+
+      <div class="col-md-8 bg-old" >
+
+      </div> 
+    </div> 
+  </div>
   <app-card-list [list]="cards">
 
   </app-card-list>

@@ -10,8 +10,13 @@ import { startWith, map, debounce, debounceTime, filter, tap, takeUntil, distinc
 })
 export class AutocompleteComponent implements OnInit {
 
-    control = new FormControl();
-    
+   control = new FormControl();
+   @Input() label = '';
+   @Input() hint = '';
+   @Input() type = "text";
+   @Input() placeholder = "Pick one";
+   @Input() ariaLabel = "search item";
+
     @Input() filteredOptions: string[];
 
     @Output() changeParams: EventEmitter<string> = new EventEmitter();
@@ -36,8 +41,14 @@ export class AutocompleteComponent implements OnInit {
     }  
 
     ngOnChanges() {
-        console.log(this.filteredOptions)
+         
     }
+
+    resetValue() {
+        this.control.setValue(null);
+        this.changeParams.emit(null)
+    }
+
     ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();

@@ -48,3 +48,39 @@ mat-toolbar {
     }
    }
 }
+
+.lp-section-2 {
+  width: 100%;    
+  border-radius: 25px;
+  padding: 30px; 
+  height: 100%; 
+  & .bg-old{
+    width: 100%;
+    background-image: url('../../../assets/images/photo-old.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+  }
+}
+.lp-heading-2 { 
+  text-align: center;
+  margin-left: auto;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  padding-top: 50px;
+  padding-right: 15px;
+  height: 450px; 
+  border-radius: 26px;
+  background-image: linear-gradient(to right bottom, rgb(235,243,250, 0.4), rgb(233,241,251 , 0.4), rgb(231,239,251 , 0.4) , rgb(231,239,251 , 0.4), rgb(230,235,252 , 0.4), rgb(223,229,252 , 0.4), rgb(217,223,252 , 0.4), rgb(217,223,252 , 0.4), rgb(193,207,253 , 0.4), rgb(173,198,253 , 0.4), rgb(149,189,254 , 0.4), rgb(119,181,254 , 0.4));
+   & h1 {
+    font-size: 76px;
+    line-height: 80px;
+    word-spacing: 10px;
+    text-shadow: 3px 2px 10px #fff;
+    transform: skew(-155deg, 166deg);
+    & b {
+      text-decoration: underline;
+    }
+   }
+}

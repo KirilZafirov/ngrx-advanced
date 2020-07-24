@@ -1,21 +1,25 @@
 
 <mat-card [ngClass]="item.class" tabindex="0">
-    <mat-card-title-group>
+    <!-- <mat-card-title-group>
         <mat-card-title>{{item.titleGroup.cardTitle}}</mat-card-title>
         <mat-card-subtitle>{{item.titleGroup.cardSubtitle}}</mat-card-subtitle>
         <img mat-card-avatar mat-card-sm-image [ngClass]="item.avatarClass">
-    </mat-card-title-group>
+    </mat-card-title-group> -->
     <img mat-card-image 
          tabindex="1"
         class="main-card-img"
         [src]="item.imgSrc.src"
         [alt]="item.imgSrc.alt">
     <mat-card-content> 
-             {{item.cardContent.textContent}} 
+             <!-- {{item.cardContent.textContent}}  -->
+             2014 Mercedez Benz SL-550 <br/>
+             $81197<br/>
+             113 Miles <br/>
+             Austin Texas <br/>
     </mat-card-content>
     <mat-card-actions align="end"> 
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <button mat-button>Details</button>
+        <button mat-button>Buy</button>
     </mat-card-actions>
 </mat-card>
  

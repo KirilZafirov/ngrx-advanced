@@ -1,12 +1,19 @@
 <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input type="text"
-             placeholder="Pick one"
-             aria-label="search item"
+    <mat-form-field>
+      <mat-label>label</mat-label>
+      <input [type]="type"
+             [placeholder]="placeholder"
+             [attr.aria-label]="ariaLabel"
              matInput
              [formControl]="control"
              [matAutocomplete]="auto">
              
+      <button mat-button *ngIf="control.value" matSuffix mat-icon-button aria-label="Clear" (click)="resetValue()"> 
+        <mat-icon>close</mat-icon>
+      </button> 
+   
+  <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
+      <mat-hint>{{hint}}</mat-hint>   
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" role="combobox">
         <mat-option *ngFor="let option of filteredOptions" [value]="option" active>
           {{option}}

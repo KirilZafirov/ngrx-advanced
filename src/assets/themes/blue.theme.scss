@@ -387,3 +387,22 @@ color: #fff !important;
 background-color: #fff !important;
 color: $dark-text !important;
 }
+
+
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  // background-image: linear-gradient(to left top, #77b5fe , #95bdfe , #adc6fd , #c1cffd , #ebf3fa, #e9f1fb, #e7effb, #e6edfc, #e6ebfc, #dfe5fc, #d9dffc, #d3d9fc, #c1cffd, #adc6fd, #95bdfe, #77b5fe) !important;
+  background-image: linear-gradient(to right bottom, 
+  rgb(235,243,250 , 0.4), 
+  rgb(233,241,251 , 0.4), 
+  rgb(231,239,251 , 0.4) ,
+  rgb(231,239,251 , 0.4),
+  rgb(230,235,252 , 0.4), 
+  rgb(223,229,252 , 0.4), 
+  rgb(217,223,252 , 0.4), 
+  rgb(217,223,252 , 0.4), 
+  rgb(193,207,253 , 0.4), 
+  rgb(173,198,253 , 0.4),
+  rgb(149,189,254 , 0.4), 
+  rgb(119,181,254 , 0.4)) !important;
+}
