@@ -1,16 +1,28 @@
 
 <mat-sidenav-container>
   <div class="landing-page">
-    <div class="row"> 
+    <div class="row">  
+      <div class="col-md-6">
+
+      </div>
+      <div class="col-md-6">
+        <mat-toolbar> 
+          <h3>Find YOUR next best car</h3>
+          <span class="nav-spacer"></span> 
+          <button mat-icon-button (click)="search.toggle()" type="button" color="primary">
+            <mat-icon>search</mat-icon> 
+        </button>
+      </mat-toolbar>
+      </div>
       <div class="lp-heading">
         <h1>
-         Get <br/>
-         <b>NEW</b>
+         Your <br/>
+         <b>Dream</b>
          <br/> 
-          Pay 
+          Our 
          <br/> 
-         <b>OLD</b> 
-        </h1>
+         <b>Vision</b> 
+        </h1>  
       </div>
      
       <div class="col-md-12">
@@ -21,6 +33,9 @@
           <div class="col-md-4">
             <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
           </div> 
+          <div class="col-md-4">
+          
+          </div>
         </div>
         <div class="row">
           <div class="col-md-4">
@@ -37,14 +52,7 @@
           <div class="col-md-4">
             <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
           </div> 
-        </div>
-        <!-- <mat-toolbar>
-            
-            <span class="nav-spacer"></span> 
-            <button mat-icon-button (click)="search.toggle()" type="button" color="primary">
-              <mat-icon>search</mat-icon> 
-          </button>
-        </mat-toolbar>  -->
+        </div> 
     </div>
     </div> 
   </div>
@@ -87,7 +95,7 @@
       </div> 
     </div> 
   </div>
-  <app-card-list [list]="cards">
+  <app-card-list [list]="cards" (onViewDetails)="viewDetails($event)">
 
   </app-card-list>
 
@@ -111,6 +119,9 @@
               <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
             </mat-form-field>
           </form> 
+          <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
+          <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
         <mat-divider></mat-divider> 
       </mat-nav-list>
     </mat-sidenav>  

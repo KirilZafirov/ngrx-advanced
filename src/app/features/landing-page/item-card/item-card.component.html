@@ -12,14 +12,15 @@
         [alt]="item.imgSrc.alt">
     <mat-card-content> 
              <!-- {{item.cardContent.textContent}}  -->
-             2014 Mercedez Benz SL-550 <br/>
+             <h4>2014 Mercedez Benz SL-550</h4> <br/>
              $81197<br/>
              113 Miles <br/>
              Austin Texas <br/>
     </mat-card-content>
     <mat-card-actions align="end"> 
-        <button mat-button>Details</button>
-        <button mat-button>Buy</button>
+        <button mat-raised-button color="primary" (click)="viewDetails(item.id)">Details</button>
+        <button mat-raised-button color="accent">Buy</button>
+        <button mat-raised-button color="warn">Compare</button>
     </mat-card-actions>
 </mat-card>
  

@@ -1,5 +1,5 @@
  
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core'; 
+import { Component, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core'; 
 import { CardItemModel } from '../../models/card-item-model';
 import { ItemViewType } from '../../models/item-view-type.model';
 @Component({
@@ -11,9 +11,13 @@ import { ItemViewType } from '../../models/item-view-type.model';
 export class CardListComponent {
 
     @Input() list: CardItemModel[]; 
-    
+    @Output() onViewDetails: EventEmitter<string> = new EventEmitter<string>();
     constructor() { 
       
     } 
+  
+    viewDetails(id: string) {
+      this.onViewDetails.emit(id);
+    }
   
 }

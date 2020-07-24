@@ -1,4 +1,5 @@
 export interface CardItemModel {
+    id: string;
     titleGroup: {
         cardTitle: string;
         cardSubtitle:string;

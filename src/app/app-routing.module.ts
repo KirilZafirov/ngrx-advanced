@@ -17,6 +17,11 @@ const routes: Routes = [
       canActivate: [AuthGuard]
     },
     {
+      path: 'details/:id',
+      loadChildren: () => import('./features/details-page/details-page.module').then(m => m.DetailsPageModule),
+      canActivate: []
+    }, 
+    {
       path: '404',
       loadChildren:() =>import('./features/not-found/not-found.module').then(m => m.NotFoundModule) ,
     },

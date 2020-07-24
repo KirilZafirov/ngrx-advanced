@@ -10,10 +10,8 @@
              
       <button mat-button *ngIf="control.value" matSuffix mat-icon-button aria-label="Clear" (click)="resetValue()"> 
         <mat-icon>close</mat-icon>
-      </button> 
-   
-  <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
-      <mat-hint>{{hint}}</mat-hint>   
+      </button>  
+      
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" role="combobox">
         <mat-option *ngFor="let option of filteredOptions" [value]="option" active>
           {{option}}

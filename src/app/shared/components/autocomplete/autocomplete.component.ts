@@ -11,8 +11,7 @@ import { startWith, map, debounce, debounceTime, filter, tap, takeUntil, distinc
 export class AutocompleteComponent implements OnInit {
 
    control = new FormControl();
-   @Input() label = '';
-   @Input() hint = '';
+   @Input() label = ''; 
    @Input() type = "text";
    @Input() placeholder = "Pick one";
    @Input() ariaLabel = "search item";
@@ -34,7 +33,14 @@ export class AutocompleteComponent implements OnInit {
             startWith(''), 
             debounceTime(500),
             distinctUntilChanged(),
-            filter(v => v.length > 2),
+            filter(v => {
+                if( v && v.length > 2) {
+                    return true;
+                } else {
+                    this.changeParams.emit(null);
+                    return false;
+                }
+            }),
             tap((params) => this.changeParams.emit(params)),
             takeUntil(this.destroy$)
         ).subscribe();
@@ -45,8 +51,7 @@ export class AutocompleteComponent implements OnInit {
     }
 
     resetValue() {
-        this.control.setValue(null);
-        this.changeParams.emit(null)
+        this.control.setValue(null); 
     }
 
     ngOnDestroy(): void {
