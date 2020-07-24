@@ -22,7 +22,6 @@ mat-toolbar {
 }
 
 .mat-option.mat-active {
-  
   background-image: linear-gradient(to right bottom, #a8cdf7, #b4d2f8, #bed7f8, #c9ddf9, #d3e2f9, #d3e1f9, #d4e1f8, #d4e0f8, #ccdaf6, #c3d3f4, #bbcdf2, #b2c7f0) !important;
 }
 
@@ -31,9 +30,13 @@ mat-toolbar {
   width: 450px;
   text-align: center;
   margin-left: auto;
-  margin-top: 100px;
-  margin-right: 100px;
+  margin-top: 50px;
+  margin-right: 15px;
+  padding-top: 50px;
+    padding-right: 15px;
   height: 450px; 
+  border-radius: 26px;
+  background-image: linear-gradient(to right bottom, rgb(235,243,250, 0.4), rgb(233,241,251 , 0.4), rgb(231,239,251 , 0.4) , rgb(231,239,251 , 0.4), rgb(230,235,252 , 0.4), rgb(223,229,252 , 0.4), rgb(217,223,252 , 0.4), rgb(217,223,252 , 0.4), rgb(193,207,253 , 0.4), rgb(173,198,253 , 0.4), rgb(149,189,254 , 0.4), rgb(119,181,254 , 0.4));
    & h1 {
     font-size: 76px;
     line-height: 80px;
