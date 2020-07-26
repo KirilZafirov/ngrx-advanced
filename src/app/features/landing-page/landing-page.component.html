@@ -2,14 +2,12 @@
 <mat-sidenav-container>
   <div class="landing-page">
     <div class="row">  
-      <div class="col-md-6">
+      <div class="col-md-11">
 
       </div>
-      <div class="col-md-6">
-        <mat-toolbar> 
-          <h3>Find YOUR next best car</h3>
-          <span class="nav-spacer"></span> 
-          <button mat-icon-button (click)="search.toggle()" type="button" color="primary">
+      <div class="col-md-1">
+        <mat-toolbar (click)="search.toggle()">
+          <button mat-icon-button  type="button" color="primary">
             <mat-icon>search</mat-icon> 
         </button>
       </mat-toolbar>
@@ -25,6 +23,7 @@
         </h1>  
       </div>
      
+      <!-- <app-card></app-card> -->
       <div class="col-md-12">
         <div class="row align-items-center">
           <div class="col-md-4">

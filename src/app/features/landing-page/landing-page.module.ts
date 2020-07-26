@@ -1,3 +1,4 @@
+import { AppCardModule } from './../card/card.module';
 import { LandingPageService } from './services/landing-page.service';
  
 import { CardListComponent } from './card-list/card-list.component';
@@ -12,6 +13,7 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
   imports: [
     SharedModule,
     LandingPageRoutingModule,
+    AppCardModule
   ],
   declarations: [
     LandingPageComponent,
