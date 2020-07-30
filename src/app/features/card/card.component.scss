@@ -39,21 +39,21 @@
         box-shadow: 0 15px 25px rgba(0,0,0,0.2);
         transition: 0.5s;
 
-        &:nth-child() {
+        &:nth-child(1) {
             .circle , .content a{
                 background: #ffaf00;
             }
         }
-        // &:nth-child(2) {
-        //     .circle , .content a{
-        //         background: #d22268;
-        //     }
-        // }
-        // &:nth-child(3) {
-        //     .circle , .content a{
-        //         background: #bb02ff;
-        //     }
-        // }
+        &:nth-child(2) {
+            .circle , .content a{
+                background: #d22268;
+            }
+        }
+        &:nth-child(3) {
+            .circle , .content a{
+                background: #bb02ff;
+            }
+        }
         &:hover {
             filter: blur(0px);
             transform: scale(1.1);

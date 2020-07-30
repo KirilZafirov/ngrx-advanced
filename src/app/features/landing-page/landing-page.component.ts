@@ -1,3 +1,5 @@
+import { BASE_SEARCH_PARAMS } from './../../models/search-params.model';
+import { AutomobileSearch } from './../../models/automobile-search.model';
 import { Router } from '@angular/router';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { CardItemModel } from './../models/card-item-model';
@@ -18,8 +20,40 @@ export class LandingPageComponent implements OnDestroy {
     constructor(public viewService: ViewService , private landingPageService: LandingPageService , private route: Router) { 
       
     } 
- 
-    query: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+    autoCompleteSearches = [ 
+      {
+        key:'year',
+        label: 'Select Year' ,
+        placeholder: 'Year of manufacture'
+      } , 
+      {
+        key:'model',
+        label: 'Select Model' ,
+        placeholder: 'Automobile Model'
+      },
+      {
+        key:'make',
+        label: 'Select Make' ,
+        placeholder: 'Automobile Made by'
+      },
+      {
+        key:'mileage',
+        label: 'Select Mileage' ,
+        placeholder: 'Automobile Mileage'
+      },
+      {
+        key:'transmission',
+        label: 'Select Transmission' ,
+        placeholder: 'Transmission'
+      },
+      {
+        key:'condition',
+        label: 'Select Condition' ,
+        placeholder: 'Automobile Condition'
+      }
+    ]
+    
+    query: BehaviorSubject<AutomobileSearch> = new BehaviorSubject<AutomobileSearch>(BASE_SEARCH_PARAMS);
       
     cards = new Array(10).fill(this.newCard());
 
@@ -28,7 +62,7 @@ export class LandingPageComponent implements OnDestroy {
     
     ngOnInit() {
       this.filteredOptions = this.query.pipe(
-        switchMap((query) => this.landingPageService.filteredItems(query))
+        switchMap((query) => this.landingPageService.filteredItems(query.keyword))
       );
     }
 
@@ -64,8 +98,15 @@ export class LandingPageComponent implements OnDestroy {
 
     } 
 
-    makeRequest(params: string) {
-      this.query.next(params);
+    makeRequest($event , key?: string) {
+      if($event){
+        const oldState = this.query.getValue();
+        const newState = {
+          ...oldState ,
+          keyword:'one', 
+          [key]:$event
+        }
+        this.query.next(newState)
+      }
     }
-
 }

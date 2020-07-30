@@ -18,6 +18,8 @@ export class AppComponent {
   links = [
     { path: "/home", icon: "home", label: "Home" },
     { path: "/products", icon: "view_list", label: "Products" },
+   
+    { path: "/shop", icon: "shop", label: "Shop" }, 
     ];
 
   constructor(private store: Store<State>, 

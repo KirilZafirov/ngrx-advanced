@@ -17,3 +17,13 @@ export interface SearchParams {
     sortOrder?: SortOrderType;
     orderColumnName?: OrderColumnNameType;
 }
+
+export const BASE_SEARCH_PARAMS = {
+    isActive : true,
+    all: false ,
+    currentPage : 0 ,
+    pageSize: 25 ,
+    keyword: null,
+    sortOrder: SortOrderType.Ascending ,
+    orderColumnName: OrderColumnNameType.Name
+}

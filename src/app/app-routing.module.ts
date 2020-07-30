@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-
+import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 
 const routerOptions: ExtraOptions = {
   // enableTracing: true,
   scrollPositionRestoration: 'enabled',
   anchorScrolling: 'enabled',
   scrollOffset: [0, 32],
+  preloadingStrategy: QuicklinkStrategy 
 };
 
 const routes: Routes = [
@@ -57,7 +58,9 @@ const routes: Routes = [
   ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes , routerOptions)],
+  imports: [
+    QuicklinkModule,
+    RouterModule.forRoot(routes , routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

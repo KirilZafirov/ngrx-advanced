@@ -1,128 +1,96 @@
-
 <mat-sidenav-container>
   <div class="landing-page">
-    <div class="row">  
+    <div class="row">
       <div class="col-md-11">
 
       </div>
       <div class="col-md-1">
         <mat-toolbar (click)="search.toggle()">
-          <button mat-icon-button  type="button" color="primary">
-            <mat-icon>search</mat-icon> 
-        </button>
-      </mat-toolbar>
-      </div>
-      <div class="lp-heading">
-        <h1>
-         Your <br/>
-         <b>Dream</b>
-         <br/> 
-          Our 
-         <br/> 
-         <b>Vision</b> 
-        </h1>  
-      </div>
-     
-      <!-- <app-card></app-card> -->
-      <div class="col-md-12">
-        <div class="row align-items-center">
-          <div class="col-md-4">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-          <div class="col-md-4">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-          <div class="col-md-4">
-          
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-          <div class="col-md-4">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-          <div class="col-md-4">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-        </div> 
+          <button mat-icon-button type="button" color="primary">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-toolbar>
+      </div> 
     </div>
-    </div> 
+    <div class="row align-items-end">
+      <div class="col-md-8 gradient">
+        <div class="row align-items-center">
+          <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
+            <div class="col-md-6">
+              <app-autocomplete [label]="autoCompleteItem.label" [placeholder]="autoCompleteItem.placeholder"
+                [filteredOptions]="filteredOptions | async"
+                (changeParams)="makeRequest( $event , autoCompleteItem.key)"></app-autocomplete>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
   </div>
- 
+<!--   
   <div class="lp-section-2">
-    <div class="row"> 
-     
+    <div class="row">
+
       <div class="col-md-4">
         <div class="lp-heading-2">
           <h1>
-           Get <br/>
-           <b>NEW</b>
-           <br/> 
-            Pay 
-           <br/> 
-           <b>OLD</b> 
+            Get <br />
+            <b>NEW</b>
+            <br />
+            Pay
+            <br />
+            <b>OLD</b>
           </h1>
-        </div> 
+        </div>
         <div class="row align-items-center">
-          <div class="col-md-12">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div>
+          <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
+            <div class="col-md-12">
+              <app-autocomplete [label]="autoCompleteItem.label" [placeholder]="autoCompleteItem.placeholder"
+                [filteredOptions]="filteredOptions | async"
+                (changeParams)="makeRequest( $event , autoCompleteItem.key)"></app-autocomplete>
+            </div>
+          </ng-container>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          </div> 
-        </div> 
+      </div>
+
+
+
+      <div class="col-md-8 bg-old">
+
+      </div>
     </div>
-
-
-
-      <div class="col-md-8 bg-old" >
-
-      </div> 
-    </div> 
-  </div>
+  </div> -->
   <app-card-list [list]="cards" (onViewDetails)="viewDetails($event)">
 
   </app-card-list>
 
 
-      <mat-sidenav #search role="search"> 
-          
-        <div style="display: flex;">
-            <span class="nav-spacer"></span>
-            <button mat-icon-button (click)="search.close()" matTooltip="Close sidenav" matTooltipClass="custom-tooltip" matTooltipPosition="right">
-              <mat-icon>keyboard_arrow_left</mat-icon>
-            </button> 
-            
-        </div> 
-      <mat-nav-list> 
-        <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <mat-label>Search</mat-label> 
-              <mat-icon matPrefix>search</mat-icon>
-              <input type="text" matInput  #message maxlength="256"  placeholder="I am searching for...">
-              <mat-hint align="start"><strong>Car , Model , Producer , Year</strong> </mat-hint>
-              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-            </mat-form-field>
-          </form> 
-          <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-          <app-autocomplete [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest($event)"></app-autocomplete>
-        <mat-divider></mat-divider> 
-      </mat-nav-list>
-    </mat-sidenav>  
-   
-  </mat-sidenav-container>
+  <mat-sidenav #search role="search">
+
+    <div style="display: flex;">
+      <span class="nav-spacer"></span>
+      <button mat-icon-button (click)="search.close()" matTooltip="Close sidenav" matTooltipClass="custom-tooltip"
+        matTooltipPosition="right">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+
+    </div>
+    <mat-nav-list>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Search</mat-label>
+          <mat-icon matPrefix>search</mat-icon>
+          <input type="text" matInput #message maxlength="256" placeholder="I am searching for...">
+          <mat-hint align="start"><strong>Car , Model , Producer , Year</strong> </mat-hint>
+          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        </mat-form-field>
+      </form>
+      <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
+        <app-autocomplete [label]="autoCompleteItem.label" [placeholder]="autoCompleteItem.placeholder"
+          [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest( $event , autoCompleteItem.key)">
+        </app-autocomplete>
+      </ng-container>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
+
+</mat-sidenav-container>

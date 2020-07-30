@@ -30,8 +30,7 @@ export class AddProductComponent implements OnInit , OnDestroy {
   }
  
   submit(form) {
-    const value = form.value;
-
+    const value = form.value; 
     const requestBody = {
       ...value,
     }
