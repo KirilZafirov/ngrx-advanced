@@ -1,3 +1,4 @@
+import { CURRENCY_TYPE } from './../product-admin-details/product-admin-details.component';
 import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup , Validators, FormControl } from '@angular/forms';
@@ -14,11 +15,12 @@ import { SessionStorageService } from 'src/app/core/services/session-storage.ser
   providers: [{ provide: StorageService, useClass: SessionStorageService }]
 })
 export class AddProductComponent implements OnInit , OnDestroy {
-   
+  currencyType = CURRENCY_TYPE;
   form: FormGroup = new FormGroup({
     name: new FormControl(null , [Validators.required]),
     description:  new FormControl(null , [Validators.required]),
     price: new FormControl(null , [Validators.required]),
+    currencyType: new FormControl(null , [Validators.required]),
   }); 
   
   constructor(private store: Store<State>,

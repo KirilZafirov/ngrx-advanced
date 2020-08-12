@@ -1,19 +1,35 @@
 
   <form class="example-form" [formGroup]="form" (ngSubmit)="submit(form)">
     <div class="row"> 
-        <mat-form-field class="example-full-width">
+        <mat-form-field >
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" formControlName="name">
         </mat-form-field>  
-        <mat-form-field class="example-full-width">
+        <mat-form-field >
           <mat-label>Price</mat-label>
           <input matInput placeholder="Price" type="number" formControlName="price">
-        </mat-form-field> 
-
-        <mat-form-field class="example-full-width">
+        </mat-form-field>  
+        <mat-form-field >
           <mat-label>Description</mat-label>
           <textarea matInput placeholder="Description" formControlName="description"></textarea>
         </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Currency Type</mat-label>
+          <mat-select id="currency_type" [formControl]="currencyType" required
+                              [ngClass]="form.get('currencyType').hasError('required') &&
+                              form.get('currencyType').touched ? 'has-error': ''">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let option of currencyType" 
+            [value]="option.value"
+            [title]="option.display">
+            {{option.display}} 
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('currencyType').hasError('required')">Please choose currency</mat-error>
+          <!-- <mat-hint>$ , £ , € </mat-hint> -->
+        </mat-form-field> 
+
       </div>  
     <div class="col-md-12">
       <button mat-button type="submit" class="primary add-edit-btn"

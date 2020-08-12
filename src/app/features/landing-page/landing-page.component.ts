@@ -76,9 +76,7 @@ export class LandingPageComponent implements OnDestroy {
     } 
 
     filterParams($event , key: string) {
-      if($event) {
-        this.carAutoCompleteService.updateAutoComplete(key , $event);
-      } 
+        this.carAutoCompleteService.updateAutoComplete(key , $event); 
     }
 
     changeParams($event , key: string) { 

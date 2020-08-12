@@ -11,7 +11,10 @@
       <tbody>
         <tr *ngFor="let product of products" [ngClass]="activeProductId === product.id ? 'table-active' : ''"> 
           <td class="align-middle">{{product.name}}</td>
-          <td class="align-middle"> {{product.price}}</td>
+          <td class="align-middle"> 
+            <app-currency [amount]="product.price"
+                          [currencySign]="product.currencyType">
+            </app-currency></td>
           <td class="align-middle">{{product.description}}</td>
           <td class="align-middle btn-action">  
               <mat-icon  color="accent" (click)="select(product.id)">edit</mat-icon>
