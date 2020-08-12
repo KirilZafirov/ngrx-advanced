@@ -1,8 +1,7 @@
 <mat-sidenav-container>
   <div class="landing-page">
     <div class="row">
-      <div class="col-md-11">
-
+      <div class="col-md-11"> 
       </div>
       <div class="col-md-1">
         <mat-toolbar (click)="search.toggle()">
@@ -12,8 +11,8 @@
         </mat-toolbar>
       </div> 
     </div>
-    <div class="row align-items-end">
-      <div class="col-md-8 gradient">
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto gradient">
         <div class="row align-items-center">
           <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
             <div class="col-md-6">
@@ -26,39 +25,11 @@
       </div>
     </div>
   </div>
-<!--   
-  <div class="lp-section-2">
-    <div class="row">
-
-      <div class="col-md-4">
-        <div class="lp-heading-2">
-          <h1>
-            Get <br />
-            <b>NEW</b>
-            <br />
-            Pay
-            <br />
-            <b>OLD</b>
-          </h1>
-        </div>
-        <div class="row align-items-center">
-          <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
-            <div class="col-md-12">
-              <app-autocomplete [label]="autoCompleteItem.label" [placeholder]="autoCompleteItem.placeholder"
-                [filteredOptions]="filteredOptions | async"
-                (changeParams)="makeRequest( $event , autoCompleteItem.key)"></app-autocomplete>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-
-
-
-      <div class="col-md-8 bg-old">
-
-      </div>
-    </div>
-  </div> -->
+  <mat-toolbar>
+    <button mat-icon-button type="button" color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-toolbar>
   <app-card-list [list]="cards" (onViewDetails)="viewDetails($event)">
 
   </app-card-list>

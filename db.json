@@ -4,7 +4,7 @@
       "name": "third testing",
       "description": "third test description",
       "price": 993,
-      "currencyType": "EUR",
+      "currencyType": "USD",
       "id": "d09ad283-b69e-4df1-a0c1-bbc405ada0b6"
     },
     {
@@ -33,6 +33,12 @@
       "price": 50,
       "currencyType": "EUR",
       "id": "b0c04ba3-ec75-4362-8260-b1c4d358c147"
+    },
+    {
+      "id": "1b232b99-aad1-4a2a-b5f7-8d24e6f5c064",
+      "name": "asda",
+      "description": "saddsfsd",
+      "price": 123
     }
   ]
 }
