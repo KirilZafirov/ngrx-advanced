@@ -16,9 +16,11 @@
         <div class="row align-items-center">
           <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
             <div class="col-md-6">
-              <app-autocomplete [label]="autoCompleteItem.label" [placeholder]="autoCompleteItem.placeholder"
-                [filteredOptions]="filteredOptions | async"
-                (changeParams)="makeRequest( $event , autoCompleteItem.key)"></app-autocomplete>
+              <app-autocomplete [label]="autoCompleteItem.label" 
+                [placeholder]="autoCompleteItem.placeholder"
+                [filteredOptions]="autoCompleteItem.allOptions"
+                (filterParams)="filterParams( $event , autoCompleteItem.key)"
+                (changeParams)="changeParams( $event , autoCompleteItem.key)"></app-autocomplete>
             </div>
           </ng-container>
         </div>
@@ -57,7 +59,9 @@
       </form>
       <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
         <app-autocomplete [label]="autoCompleteItem.label" [placeholder]="autoCompleteItem.placeholder"
-          [filteredOptions]="filteredOptions | async" (changeParams)="makeRequest( $event , autoCompleteItem.key)">
+          [filteredOptions]="autoCompleteItem.allOptions" 
+          (filterParams)="filterParams( $event , autoCompleteItem.key)"
+          (changeParams)="changeParams( $event , autoCompleteItem.key)">
         </app-autocomplete>
       </ng-container>
       <mat-divider></mat-divider>

@@ -13,7 +13,7 @@
         <mat-icon>close</mat-icon>
       </button>  
       
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" role="combobox">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" role="combobox" (optionSelected)="selected($event.option.value)">
         <mat-option *ngFor="let option of filteredOptions" [value]="option" active>
           {{option}}
         </mat-option>

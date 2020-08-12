@@ -18,6 +18,8 @@ export class AutocompleteComponent implements OnInit {
 
     @Input() filteredOptions: string[];
 
+    @Output() filterParams: EventEmitter<string> = new EventEmitter();
+
     @Output() changeParams: EventEmitter<string> = new EventEmitter();
 
     destroy$ = new Subject();
@@ -34,17 +36,21 @@ export class AutocompleteComponent implements OnInit {
             debounceTime(500),
             distinctUntilChanged(),
             filter(v => {
-                if( v && v.length > 2) {
+                if( v && v.length >= 2) {
                     return true;
                 } else {
-                    this.changeParams.emit(null);
+                    this.filterParams.emit(null);
                     return false;
                 }
             }),
-            tap((params) => this.changeParams.emit(params)),
+            tap((params) => this.filterParams.emit(params)),
             takeUntil(this.destroy$)
         ).subscribe();
     }  
+
+    selected(selectedValue){
+        this.changeParams.emit(selectedValue);
+    }
 
     ngOnChanges() {
          

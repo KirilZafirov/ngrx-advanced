@@ -10,9 +10,7 @@ export class LandingPageService {
     constructor(protected baseApi: BaseApiService<any>) { 
     }
 
-    filteredItems(queryParams): Observable<string[]> {
-        return queryParams ? of(ITEMS.filter(option => option.toLowerCase().indexOf(queryParams.toLowerCase()) === 0)) : of([]); 
+    filteredItems(queryParams): Observable<any[]> {
+        return queryParams ? this.baseApi.get('products', queryParams) : of([]); 
     }
 } 
-
-const ITEMS = ['One' , 'Two' , 'Three', 'One' , 'Two' , 'Three' , 'One' , 'Two' , 'Three' , 'One' , 'Two' , 'Three']

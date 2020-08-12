@@ -6,10 +6,11 @@ import { CardItemModel } from './../models/card-item-model';
 import { ViewService } from './../../core/services/view.service'; 
 
 import { Component, OnDestroy } from '@angular/core'; 
-import { switchMap, map, filter } from 'rxjs/operators';
+import { switchMap, map, filter, tap } from 'rxjs/operators';
 import { LandingPageService } from './services/landing-page.service';
 
 import { v4 as uuidv4 } from "uuid";
+import { CarAutoCompleteService, AutoCompleteSearch } from 'src/app/core/services/car-autocomplete.service';
 
 @Component({
   templateUrl: './landing-page.component.html',
@@ -17,53 +18,29 @@ import { v4 as uuidv4 } from "uuid";
 })
 export class LandingPageComponent implements OnDestroy {
 
-    constructor(public viewService: ViewService , private landingPageService: LandingPageService , private route: Router) { 
+    constructor(public viewService: ViewService , 
+      private landingPageService: LandingPageService , 
+      private carAutoCompleteService: CarAutoCompleteService,
+      private route: Router) { 
       
     } 
-    autoCompleteSearches = [ 
-      {
-        key:'year',
-        label: 'Select Year' ,
-        placeholder: 'Year of manufacture'
-      } , 
-      {
-        key:'model',
-        label: 'Select Model' ,
-        placeholder: 'Automobile Model'
-      },
-      {
-        key:'make',
-        label: 'Select Make' ,
-        placeholder: 'Automobile Made by'
-      },
-      {
-        key:'mileage',
-        label: 'Select Mileage' ,
-        placeholder: 'Automobile Mileage'
-      },
-      {
-        key:'transmission',
-        label: 'Select Transmission' ,
-        placeholder: 'Transmission'
-      },
-      {
-        key:'condition',
-        label: 'Select Condition' ,
-        placeholder: 'Automobile Condition'
-      }
-    ]
+    autoCompleteSearches: AutoCompleteSearch[] =  this.carAutoCompleteService.carAutoCompleteSearch;
     
     query: BehaviorSubject<AutomobileSearch> = new BehaviorSubject<AutomobileSearch>(BASE_SEARCH_PARAMS);
       
     cards = new Array(10).fill(this.newCard());
 
-    filteredOptions: Observable<string[]>;
+    filteredOptions: Observable<any[]>;
 
     
     ngOnInit() {
-      this.filteredOptions = this.query.pipe(
-        switchMap((query) => this.landingPageService.filteredItems(query.keyword))
-      );
+      // this.filteredOptions = 
+      this.query.pipe(
+        switchMap((query) => this.landingPageService.filteredItems(query)),
+        tap((results) => {
+          console.log(results)
+        })
+      ).subscribe();
     }
 
     viewDetails(id: string) {
@@ -98,12 +75,17 @@ export class LandingPageComponent implements OnDestroy {
 
     } 
 
-    makeRequest($event , key?: string) {
+    filterParams($event , key: string) {
+      if($event) {
+        this.carAutoCompleteService.updateAutoComplete(key , $event);
+      } 
+    }
+
+    changeParams($event , key: string) { 
       if($event){
         const oldState = this.query.getValue();
         const newState = {
           ...oldState ,
-          keyword:'one', 
           [key]:$event
         }
         this.query.next(newState)

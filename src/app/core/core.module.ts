@@ -1,3 +1,4 @@
+import { CarAutoCompleteService } from './services/car-autocomplete.service';
 import { ViewService } from './services/view.service';
 import { IndexedDBStorageService } from './services/indexedDb-storage.service';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
@@ -26,6 +27,7 @@ import { HandleHttpErrorInterceptor } from './interceptors/handle-http-error.int
     AuthService,
     SessionStorageService,
     IndexedDBStorageService,
+    CarAutoCompleteService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HandleHttpErrorInterceptor,
