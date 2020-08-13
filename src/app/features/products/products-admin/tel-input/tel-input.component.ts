@@ -21,6 +21,11 @@ export interface CustomTelInput {
   styleUrls: ['./tel-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{provide: MatFormFieldControl, useExisting: TelInputComponent}],
+  host: {
+    '[class.example-floating]': 'shouldLabelFloat',
+    '[id]': 'id',
+    '[attr.aria-describedby]': 'describedBy'
+  }
 })
 export class TelInputComponent implements ControlValueAccessor , OnDestroy {
   static nextId = 0;
@@ -114,7 +119,7 @@ export class TelInputComponent implements ControlValueAccessor , OnDestroy {
       ],
       subscriber: [
         null,
-        [Validators.required, Validators.minLength(4), Validators.maxLength(4)]
+        [Validators.required, Validators.minLength(3), Validators.maxLength(3)]
       ]
     });
 

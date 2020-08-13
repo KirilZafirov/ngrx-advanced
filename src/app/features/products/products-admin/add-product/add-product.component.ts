@@ -12,7 +12,7 @@ import { SessionStorageService } from 'src/app/core/services/session-storage.ser
 import { CustomTelInput } from '../tel-input/tel-input.component';
 @Component({
   templateUrl: './add-product.component.html',
-  providers: [{ provide: StorageService, useClass: SessionStorageService }]
+  providers: [{ provide: StorageService, useClass: SessionStorageService }],
 })
 export class AddProductComponent implements OnInit , OnDestroy {
   currencyTypes = CURRENCY_TYPE;
