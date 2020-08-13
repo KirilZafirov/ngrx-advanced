@@ -18,7 +18,7 @@ export class ProductAdminDetailsComponent implements OnInit , OnDestroy  {
   };
   destroy$ = new Subject();
   form: FormGroup;
-  currencyType = CURRENCY_TYPE; 
+  currencyTypes = CURRENCY_TYPE; 
   productDetailsLoading$: Observable<boolean>;
 
   constructor(

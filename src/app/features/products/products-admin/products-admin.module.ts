@@ -1,3 +1,4 @@
+import { TelInputComponent } from './tel-input/tel-input.component';
 import { ProductListGhostComponent } from './product-list-ghost/product-list-ghost.component';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '../../../shared/shared.module';
@@ -23,9 +24,10 @@ import { ConfirmDialogComponent } from 'src/app/shared/components/confirmation-d
     ProductAdminDetailsComponent , 
     AddProductComponent , 
     ProductListComponent , 
-    ProductListGhostComponent
+    ProductListGhostComponent,
+    TelInputComponent
   ],
-  entryComponents: [],
+  entryComponents: [AddProductComponent, TelInputComponent],  
   providers:[ProductsService]
 })
 export class ProductsAdminModule { }

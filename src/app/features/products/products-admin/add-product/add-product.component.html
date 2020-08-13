@@ -1,26 +1,26 @@
 
-  <form class="example-form" [formGroup]="form" (ngSubmit)="submit(form)">
+  <form class="example-form" [formGroup]="form" name="add-product" (ngSubmit)="submit(form)">
     <div class="row"> 
         <mat-form-field >
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" formControlName="name">
+          <input matInput placeholder="Name" formControlName="name" required>
+          <mat-error *ngIf="form.get('name').hasError('required')">product name is required</mat-error>
         </mat-form-field>  
         <mat-form-field >
           <mat-label>Price</mat-label>
-          <input matInput placeholder="Price" type="number" formControlName="price">
+          <input matInput placeholder="Price" type="number" formControlName="price" onkeydown="return event.keyCode !== 69" required>
+          <mat-error *ngIf="form.get('price').hasError('required')">product price is required</mat-error>
         </mat-form-field>  
         <mat-form-field >
           <mat-label>Description</mat-label>
-          <textarea matInput placeholder="Description" formControlName="description"></textarea>
+          <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+          <mat-error *ngIf="form.get('description').hasError('required')">A good description can bring you better sale</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field>
           <mat-label>Currency Type</mat-label>
-          <mat-select id="currency_type" [formControl]="currencyType" required
-                              [ngClass]="form.get('currencyType').hasError('required') &&
-                              form.get('currencyType').touched ? 'has-error': ''">
-            <mat-option>--</mat-option>
-            <mat-option *ngFor="let option of currencyType" 
+          <mat-select id="currency_type" formControlName="currencyType" required>
+            <mat-option *ngFor="let option of currencyTypes" 
             [value]="option.value"
             [title]="option.display">
             {{option.display}} 
@@ -30,11 +30,18 @@
           <!-- <mat-hint>$ , £ , € </mat-hint> -->
         </mat-form-field> 
 
+        <mat-form-field appearance="fill">
+          <mat-label>Phone number</mat-label>
+          <app-tel-input formControlName="tel" required></app-tel-input>
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-hint>Include area code</mat-hint>
+        </mat-form-field>
+
       </div>  
-    <div class="col-md-12">
-      <button mat-button type="submit" class="primary add-edit-btn"
+    <div class="col-md-12">  
+      <button mat-raised-button type="submit" class="primary add-edit-btn"
         [disabled]="form.invalid && !form.dirty">Save</button>
-      <button mat-button type="button" class="cancel-btn" (click)="clear()">Cancel</button>
+      <button mat-raised-button type="button" class="cancel-btn" (click)="clear()">Cancel</button>
     </div>
   </form> 
  
