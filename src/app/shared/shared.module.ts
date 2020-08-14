@@ -13,29 +13,35 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 
 
-const sharedComponents = [UserComponent , FormStorageDirective , ConfirmDialogComponent , AutocompleteComponent , WithLoadingPipe , CurrencyComponent];
-   
+const sharedComponents = [
+  UserComponent,
+  FormStorageDirective,
+  ConfirmDialogComponent,
+  AutocompleteComponent,
+  WithLoadingPipe,
+  CurrencyComponent];
+
 
 @NgModule({
-    imports: [
-      CommonModule , 
-      FormsModule,
-      ReactiveFormsModule,
-      MaterialModule,
-      RouterModule
-    ],
-    declarations: [  ...sharedComponents ],
-    exports: [
-      CommonModule,
-      FormsModule,
-      ReactiveFormsModule, 
-      MaterialModule,
-      ...sharedComponents
-    ],
-    providers: [
-      { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
-      { provide: MAT_DATE_LOCALE,  useValue: 'en-US'}
-    ],
-    entryComponents: [],
-  })
-export class SharedModule {}
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    RouterModule
+  ],
+  declarations: [...sharedComponents],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    ...sharedComponents
+  ],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-US' }
+  ],
+  entryComponents: [],
+})
+export class SharedModule { }

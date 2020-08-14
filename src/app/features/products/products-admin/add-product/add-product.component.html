@@ -4,8 +4,11 @@
         <mat-form-field >
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" formControlName="name" required>
+          <button mat-button *ngIf="form.get('name').value" matSuffix mat-icon-button aria-label="Clear" (click)="resetValue('name', '')"> 
+            <mat-icon>close</mat-icon>
+          </button>  
           <mat-error *ngIf="form.get('name').hasError('required')">product name is required</mat-error>
-        </mat-form-field>  
+        </mat-form-field>   
         <mat-form-field >
           <mat-label>Price</mat-label>
           <input matInput placeholder="Price" type="number" formControlName="price" onkeydown="return event.keyCode !== 69" required>

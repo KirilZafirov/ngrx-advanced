@@ -7,7 +7,6 @@ import { State } from 'src/app/shared/state';
 import { ProductsPageActions } from '../actions';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { IndexedDBStorageService } from 'src/app/core/services/indexedDb-storage.service';
-import { filter, tap } from 'rxjs/operators';
 import { SessionStorageService } from 'src/app/core/services/session-storage.service'; 
 import { CustomTelInput } from '../tel-input/tel-input.component';
 @Component({
@@ -56,5 +55,11 @@ export class AddProductComponent implements OnInit , OnDestroy {
 
   ngOnDestroy(): void {  
     this.store.dispatch(ProductsPageActions.addProductPageActive({isActive: false , productDetailsLoading: false}));
+  }
+
+  resetValue(formKey , value) {
+    this.form.patchValue({
+      [formKey]:value
+    }); 
   }
 }
