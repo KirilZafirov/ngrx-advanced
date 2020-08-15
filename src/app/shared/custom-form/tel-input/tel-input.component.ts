@@ -6,15 +6,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 class MyTel {
   constructor(public area: string, public exchange: string, public subscriber: string) {}
-}
-
-export interface CustomTelInput {
-  area: string;
-  exchange: string;
-  subscriber: string;
-}
-
-
+} 
 @Component({
   selector: 'app-tel-input',
   templateUrl: './tel-input.component.html',

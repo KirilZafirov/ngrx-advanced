@@ -1,7 +1,10 @@
 <mat-form-field [formGroup]="form">
     <mat-label>{{config.label}}</mat-label>
 
-    <input matInput (input)="onChange($event.target.value)" [placeholder]="config.placeholder"
+    <input matInput 
+    (input)="onChange($event.target.value)" 
+    [placeholder]="config.placeholder"
+    [errorStateMatcher]="customErrorStateMatcher"
         [formControlName]="config.formKey" required>
 
     <button mat-button *ngIf="form.get(config.formKey)?.value" matSuffix mat-icon-button aria-label="Clear"

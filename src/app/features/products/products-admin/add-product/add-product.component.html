@@ -1,15 +1,6 @@
 
   <form class="example-form" [formGroup]="form" name="add-product" (ngSubmit)="submit(form)">
-    <div class="row"> 
-        <!-- <mat-form-field >
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" formControlName="name" required>
-          <button mat-button *ngIf="form.get('name').value" matSuffix mat-icon-button aria-label="Clear" (click)="resetValue('name', '')"> 
-            <mat-icon>close</mat-icon>
-          </button>  
-          <mat-error *ngIf="form.get('name').hasError('required')">product name is required</mat-error>
-        </mat-form-field>    -->
-        
+    <div class="row">  
         <app-text-input   
               formControlName="name" 
               [config]="nameConfig" 
@@ -18,7 +9,11 @@
 
         </app-text-input> 
 
-        <app-text-input  formControlName="brand" [config]="brandConfig" style="display: contents;" [initialValue]="form.get('brand').value">
+        <app-text-input  
+        formControlName="brand" 
+        [config]="brandConfig" 
+        style="display: contents;" 
+        [initialValue]="form.get('brand').value">
 
         </app-text-input> 
         

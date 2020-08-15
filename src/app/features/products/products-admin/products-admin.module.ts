@@ -1,5 +1,3 @@
-import { TextInputComponent } from './text-input/text-input.component';
-import { TelInputComponent } from './tel-input/tel-input.component';
 import { ProductListGhostComponent } from './product-list-ghost/product-list-ghost.component';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '../../../shared/shared.module';
@@ -23,9 +21,7 @@ import { ProductListComponent } from './product-list/product-list.component';
     ProductAdminDetailsComponent , 
     AddProductComponent , 
     ProductListComponent , 
-    ProductListGhostComponent,
-    TelInputComponent,
-    TextInputComponent
+    ProductListGhostComponent
   ],
   entryComponents: [],  
   providers:[ProductsService]

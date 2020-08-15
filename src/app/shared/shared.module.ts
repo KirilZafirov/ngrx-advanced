@@ -1,3 +1,10 @@
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { NgModule } from '@angular/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { RouterModule } from '@angular/router';
+
 import { ValidationErrorsPipe } from './pipes/validation-errors.pipe'; 
 import { ValidationMessages } from './services/validation-messages.service';
 import { CurrencyComponent } from './components/currency/currency.component';
@@ -7,13 +14,8 @@ import { ConfirmDialogComponent } from './components/confirmation-dialog/confirm
 import { FormStorageDirective } from './directives/index';
 import { UserComponent } from './components/user/user.component';
 import { MaterialModule } from './material.module';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { NgModule } from '@angular/core';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { RouterModule } from '@angular/router';
-
+import { TelInputComponent } from './custom-form/tel-input/tel-input.component';
+import { TextInputComponent } from './custom-form/text-input/text-input.component';
 
 const sharedComponents = [
   UserComponent,
@@ -22,7 +24,9 @@ const sharedComponents = [
   AutocompleteComponent,
   WithLoadingPipe,
   CurrencyComponent,
-  ValidationErrorsPipe];
+  ValidationErrorsPipe,
+  TelInputComponent,
+  TextInputComponent];
 
 
 @NgModule({

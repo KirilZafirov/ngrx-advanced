@@ -1,3 +1,6 @@
+import { FORM_BRAND_CONFIG } from './add-product-configs/brand-config';
+import { FORM_NAME_CONFIG } from './add-product-configs/name-config';
+ 
 import { CURRENCY_TYPE } from './../product-admin-details/product-admin-details.component';
 import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -7,8 +10,8 @@ import { State } from 'src/app/shared/state';
 import { ProductsPageActions } from '../actions';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { IndexedDBStorageService } from 'src/app/core/services/indexedDb-storage.service';
-import { SessionStorageService } from 'src/app/core/services/session-storage.service'; 
-import { CustomTelInput } from '../tel-input/tel-input.component';
+import { SessionStorageService } from 'src/app/core/services/session-storage.service';
+import { CustomTelInput } from 'src/app/shared/models/tel-input.model';
 @Component({
   templateUrl: './add-product.component.html',
   providers: [{ provide: StorageService, useClass: SessionStorageService }],
@@ -16,25 +19,9 @@ import { CustomTelInput } from '../tel-input/tel-input.component';
 export class AddProductComponent implements OnInit , OnDestroy {
   currencyTypes = CURRENCY_TYPE;
  
-  nameConfig = {
-    formKey: 'name',
-    label: 'Name',
-    placeholder: 'Product Name',
-    hintLeft:'short name',
-    hintRight: true,
-    maxLength: 50,
-    validators:[Validators.required]
-  }
-
-  brandConfig = {
-    formKey: 'brand',
-    label: 'Brand',
-    placeholder: 'Brand',
-    hintLeft:'Some Hint',
-    hintRight: true,
-    maxLength: 9,
-    validators:[Validators.required , Validators.minLength(3), Validators.maxLength(9)]
-  }
+  nameConfig = FORM_NAME_CONFIG;
+  brandConfig = FORM_BRAND_CONFIG;
+  
   getTelInput(): CustomTelInput {
     return {
       area: '' ,
@@ -44,7 +31,7 @@ export class AddProductComponent implements OnInit , OnDestroy {
   }
   form: FormGroup = new FormGroup({
     name: new FormControl('' , [Validators.required]),
-    brand: new FormControl('' , [...this.brandConfig.validators]),
+    brand: new FormControl('' , [Validators.required , Validators.minLength(3), Validators.maxLength(9)]),
     description:  new FormControl('' , [Validators.required]),
     price: new FormControl(null , [Validators.required]),
     currencyType: new FormControl(null , [Validators.required]),

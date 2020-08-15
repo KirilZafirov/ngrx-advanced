@@ -1,20 +1,12 @@
-import { ValidationMessages } from './../../../../shared/services/validation-messages.service';
-import { Component, OnInit, Optional, Self, OnDestroy, Input, ChangeDetectionStrategy, ElementRef } from '@angular/core';
-import { NgControl, ControlValueAccessor, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
-export interface CustomFormFieldConfig {
-  formKey: string;
-  label: string;
-  placeholder: string;
-  hintLeft: string | boolean;
-  hintRight: string | boolean;
-  hasClearBtn: boolean;
-  matIconClear: string;
-  maxLength: string;
-  validators: Validators[];
-}
+import { Component, OnInit, Optional, Self, OnDestroy, Input, ChangeDetectionStrategy } from '@angular/core';
+import { NgControl, ControlValueAccessor, FormGroup, FormBuilder } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { coerceBooleanProperty } from '@angular/cdk/coercion'; 
+
+import { CustomErrorStateMatcher } from '../custom-error-state-matcher';
+import { CustomFormFieldConfig } from '../models/custom-form-field-config.model';
+
 @Component({
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
@@ -23,7 +15,8 @@ export interface CustomFormFieldConfig {
   host: {
     '[id]': 'id',
     // '[attr.aria-describedby]': 'describedBy'
-  }
+  },
+  providers: [CustomErrorStateMatcher]
 })
 export class TextInputComponent implements OnInit , ControlValueAccessor , OnDestroy {
 
@@ -64,7 +57,8 @@ export class TextInputComponent implements OnInit , ControlValueAccessor , OnDes
   }
 
   constructor(   private formBuilder: FormBuilder,
-                 @Optional() @Self() public ngControl: NgControl) {
+                 @Optional() @Self() public ngControl: NgControl,
+                 public customErrorStateMatcher: CustomErrorStateMatcher) {
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this;
     }
