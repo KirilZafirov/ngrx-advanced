@@ -1,18 +1,15 @@
 
-  <form class="example-form" [formGroup]="form" name="add-product" (ngSubmit)="submit(form)">
-    <div class="row">  
+  <form class="example-form" [formGroup]="form" name="add-product" (ngSubmit)="submit(form)"> 
         <app-text-input   
               formControlName="name" 
-              [config]="nameConfig" 
-              style="display: contents;" 
+              [config]="nameConfig"  
               [initialValue]="form.get('name').value">
 
         </app-text-input> 
 
         <app-text-input  
         formControlName="brand" 
-        [config]="brandConfig" 
-        style="display: contents;" 
+        [config]="brandConfig"  
         [initialValue]="form.get('brand').value">
 
         </app-text-input> 
@@ -46,9 +43,7 @@
           <app-tel-input formControlName="tel" required></app-tel-input>
           <mat-icon matSuffix>phone</mat-icon>
           <mat-hint>Include area code</mat-hint>
-        </mat-form-field>
-
-      </div>  
+        </mat-form-field> 
     <div class="col-md-12">  
       <button mat-raised-button type="submit" class="primary add-edit-btn"
         [disabled]="form.invalid">Save</button>
