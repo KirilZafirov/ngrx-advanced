@@ -16,6 +16,25 @@ import { CustomTelInput } from '../tel-input/tel-input.component';
 export class AddProductComponent implements OnInit , OnDestroy {
   currencyTypes = CURRENCY_TYPE;
  
+  nameConfig = {
+    formKey: 'name',
+    label: 'Name',
+    placeholder: 'Product Name',
+    hintLeft:'short name',
+    hintRight: true,
+    maxLength: 50,
+    validators:[Validators.required]
+  }
+
+  brandConfig = {
+    formKey: 'brand',
+    label: 'Brand',
+    placeholder: 'Brand',
+    hintLeft:'Some Hint',
+    hintRight: true,
+    maxLength: 9,
+    validators:[Validators.required , Validators.minLength(3), Validators.maxLength(9)]
+  }
   getTelInput(): CustomTelInput {
     return {
       area: '' ,
@@ -24,8 +43,9 @@ export class AddProductComponent implements OnInit , OnDestroy {
     }
   }
   form: FormGroup = new FormGroup({
-    name: new FormControl(null , [Validators.required]),
-    description:  new FormControl(null , [Validators.required]),
+    name: new FormControl('' , [Validators.required]),
+    brand: new FormControl('' , [...this.brandConfig.validators]),
+    description:  new FormControl('' , [Validators.required]),
     price: new FormControl(null , [Validators.required]),
     currencyType: new FormControl(null , [Validators.required]),
     tel: new FormControl(this.getTelInput())

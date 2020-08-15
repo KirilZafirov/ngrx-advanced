@@ -1,14 +1,27 @@
 
   <form class="example-form" [formGroup]="form" name="add-product" (ngSubmit)="submit(form)">
     <div class="row"> 
-        <mat-form-field >
+        <!-- <mat-form-field >
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" formControlName="name" required>
           <button mat-button *ngIf="form.get('name').value" matSuffix mat-icon-button aria-label="Clear" (click)="resetValue('name', '')"> 
             <mat-icon>close</mat-icon>
           </button>  
           <mat-error *ngIf="form.get('name').hasError('required')">product name is required</mat-error>
-        </mat-form-field>   
+        </mat-form-field>    -->
+        
+        <app-text-input   
+              formControlName="name" 
+              [config]="nameConfig" 
+              style="display: contents;" 
+              [initialValue]="form.get('name').value">
+
+        </app-text-input> 
+
+        <app-text-input  formControlName="brand" [config]="brandConfig" style="display: contents;" [initialValue]="form.get('brand').value">
+
+        </app-text-input> 
+        
         <mat-form-field >
           <mat-label>Price</mat-label>
           <input matInput placeholder="Price" type="number" formControlName="price" onkeydown="return event.keyCode !== 69" required>
@@ -43,8 +56,7 @@
       </div>  
     <div class="col-md-12">  
       <button mat-raised-button type="submit" class="primary add-edit-btn"
-        [disabled]="form.invalid && !form.dirty">Save</button>
+        [disabled]="form.invalid">Save</button>
       <button mat-raised-button type="button" class="cancel-btn" (click)="clear()">Cancel</button>
     </div>
   </form> 
- 

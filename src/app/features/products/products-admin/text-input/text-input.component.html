@@ -1,0 +1,22 @@
+<mat-form-field [formGroup]="form">
+    <mat-label>{{config.label}}</mat-label>
+
+    <input matInput (input)="onChange($event.target.value)" [placeholder]="config.placeholder"
+        [formControlName]="config.formKey" required>
+
+    <button mat-button *ngIf="form.get(config.formKey)?.value" matSuffix mat-icon-button aria-label="Clear"
+        (click)="resetValue()">
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <mat-hint align="start"><strong>{{config.hintLeft}}</strong></mat-hint>
+    <mat-hint align="end">{{form.get(config.formKey)?.value?.length}} / {{config.maxLength}}</mat-hint>
+  
+    <mat-error *ngFor="let error of form.get(config.formKey).errors | validationErrors:config.formKey">{{error}}</mat-error>
+    <!-- <app-validation-messages 
+                [fieldName]="config.formKey"
+                [myFormControl]="form.get(config.formKey)">
+        </app-validation-messages> 
+    --> 
+  
+</mat-form-field>

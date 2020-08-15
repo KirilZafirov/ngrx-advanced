@@ -1,3 +1,5 @@
+import { ValidationErrorsPipe } from './pipes/validation-errors.pipe'; 
+import { ValidationMessages } from './services/validation-messages.service';
 import { CurrencyComponent } from './components/currency/currency.component';
 import { WithLoadingPipe } from './pipes/with-loading.pipe';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
@@ -19,7 +21,8 @@ const sharedComponents = [
   ConfirmDialogComponent,
   AutocompleteComponent,
   WithLoadingPipe,
-  CurrencyComponent];
+  CurrencyComponent,
+  ValidationErrorsPipe];
 
 
 @NgModule({
@@ -39,6 +42,7 @@ const sharedComponents = [
     ...sharedComponents
   ],
   providers: [
+    ValidationMessages,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
     { provide: MAT_DATE_LOCALE, useValue: 'en-US' }
   ],

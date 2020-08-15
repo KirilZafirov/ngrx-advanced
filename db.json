@@ -40,6 +40,19 @@
       "price": 123,
       "currencyType": "USD",
       "id": "1b232b99-aad1-4a2a-b5f7-8d24e6f5c064"
+    },
+    {
+      "id": "a4561738-0028-4c05-8ec8-47d2326a8d8b",
+      "name": "adsadas",
+      "brand": "adsadasdsa",
+      "description": "sxafsdfs",
+      "price": 121321,
+      "currencyType": "USD",
+      "tel": {
+        "area": "123",
+        "exchange": "213",
+        "subscriber": "123"
+      }
     }
   ]
 }
