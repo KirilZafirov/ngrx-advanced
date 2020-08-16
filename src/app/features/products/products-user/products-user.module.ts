@@ -2,6 +2,7 @@ import { ProductsService } from './../services/products-data.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { ProductsUserRoutingModule } from './products-user-routing.module';
+import { ProductsUserShellComponent } from './products-user-shell.component';
  
 
 @NgModule({
@@ -9,7 +10,7 @@ import { ProductsUserRoutingModule } from './products-user-routing.module';
     ProductsUserRoutingModule,
     SharedModule,
   ],
-  declarations: [],
+  declarations: [ProductsUserShellComponent],
   entryComponents: [],
   providers:[ProductsService]
 })
