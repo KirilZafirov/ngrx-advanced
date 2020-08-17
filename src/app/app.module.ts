@@ -11,6 +11,8 @@ import { EffectsModule } from "@ngrx/effects";
 import { reducers , metaReducers} from './shared/state';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     StoreModule.forRoot( reducers, { metaReducers}),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
