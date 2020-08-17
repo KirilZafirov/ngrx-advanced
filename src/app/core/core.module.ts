@@ -1,3 +1,4 @@
+import { UiMetaService } from './services/ui-meta.service';
 import { CarAutoCompleteService } from './services/car-autocomplete.service';
 import { ViewService } from './services/view.service';
 import { IndexedDBStorageService } from './services/indexedDb-storage.service';
@@ -28,6 +29,7 @@ import { HandleHttpErrorInterceptor } from './interceptors/handle-http-error.int
     SessionStorageService,
     IndexedDBStorageService,
     CarAutoCompleteService,
+    UiMetaService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HandleHttpErrorInterceptor,
