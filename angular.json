@@ -26,7 +26,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/robots.txt"
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -95,7 +96,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/robots.txt"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
@@ -175,6 +177,20 @@
           },
           "configurations": {
             "production": {}
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "ngxr-advanced:build",
+            "serverTarget": "ngxr-advanced:server",
+            "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngxr-advanced:build:production",
+              "serverTarget": "ngxr-advanced:server:production"
+            }
           }
         }
       }
