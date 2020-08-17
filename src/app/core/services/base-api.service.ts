@@ -15,7 +15,7 @@ export class BaseApiService<T> implements OnDestroy {
   baseUrl;
   requestMemo = {};
 
-  private webWorker: Worker;
+  // private webWorker: Worker;
 
   constructor(protected http: HttpClient , private notificationService: NotificationService) {
     this.baseUrl = BASE_URL;
@@ -117,6 +117,6 @@ export class BaseApiService<T> implements OnDestroy {
 }
 
   ngOnDestroy() {
-    this.webWorker.terminate();
+    // this.webWorker.terminate();
   }
 }

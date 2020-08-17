@@ -7,6 +7,7 @@ import { State, selectAuthUser } from './shared/state';
 import { AuthUserActions, AuthApiActions } from './features/auth/actions';
 import { Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { SessionStorageService } from './core/services/session-storage.service';
 
 @Component({
   selector: 'app-root',
