@@ -6,7 +6,7 @@
     "start": "concurrently \"npm run server\" \"ng serve -o\"",
     "start:ssr": "concurrently \"npm run server\" \"npm run serve:ssr\"",
     "server": "json-server db.json --watch",
-    "start:prod": "npx serve -s ./dist/ngxr-advanced",
+    "start:prod": "npx serve -s ./dist/ngxr-advanced/browser",
     "start:prod:db": "concurrently \"npm run server\" \"npm run start:prod\"",
 
     "http:server":"npx http-server -p 8080 ./dist/ngxr-advanced",
