@@ -53,6 +53,19 @@
         "exchange": "213",
         "subscriber": "123"
       }
+    },
+    {
+      "id": "8b423b44-f553-42ae-b239-cf2c749cd105",
+      "name": "sdfsdfdsfdsfds",
+      "brand": "sdfsdf",
+      "description": "asdasdsqadasdsasfs",
+      "price": 23,
+      "currencyType": "USD",
+      "tel": {
+        "area": "123",
+        "exchange": "232",
+        "subscriber": "333"
+      }
     }
   ]
 }

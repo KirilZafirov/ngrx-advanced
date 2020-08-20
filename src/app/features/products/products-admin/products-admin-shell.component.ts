@@ -1,3 +1,4 @@
+import { UiMetaService } from './../../../core/services/ui-meta.service';
 import { Observable } from 'rxjs';
 import { Product } from './../services/products-data.service';
 import { Component, OnDestroy, OnInit } from '@angular/core'; 
@@ -8,6 +9,7 @@ import { ProductsPageActions } from './actions';
 import { SearchParams } from 'src/app/models/search-params.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { tap } from 'rxjs/operators';
 @Component({
   templateUrl: './products-admin-shell.component.html'
 })
@@ -23,8 +25,11 @@ export class ProductsAdminShellComponent implements OnInit , OnDestroy {
   
   constructor(private store: Store<fromRoot.State>,
               private router: Router,
-              public dialog: MatDialog) {
-      this.products$ = this.store.select(fromRoot.selectAllProducts);
+              public dialog: MatDialog,
+              private uiMeta: UiMetaService) {
+      this.products$ = this.store.select(fromRoot.selectAllProducts).pipe(
+        tap(products => this.metaData(products))
+      );
       this.activeProductId$ = this.store.select(state => state.products.activeProductId);
       this.isProductFormActive$ = this.store.select(fromRoot.isProductFormActive);
       this.productDetailsLoading$ = this.store.select(state => state.products.productDetailsLoading);
@@ -53,6 +58,13 @@ export class ProductsAdminShellComponent implements OnInit , OnDestroy {
 
   ngOnDestroy() {
   }
+
+  metaData(products: Product[]){
+    this.uiMeta.setMetaData({
+        title: 'Products',
+        description: `Check our our collection of ${products.length} products`
+    })
+}
 
   confirmDialog(item: Product): void {
     const message = `Are you sure you want to do this?`;
