@@ -75,16 +75,19 @@ export class LandingPageComponent implements OnDestroy {
 
     } 
 
-    filterParams($event , key: string) {
-        this.carAutoCompleteService.updateAutoComplete(key , $event); 
+    filterParams($event) {
+      const { event , key } = $event;
+        this.carAutoCompleteService.updateAutoComplete(key , event); 
     }
 
-    changeParams($event , key: string) { 
+    changeParams($event) {  
       if($event){
+        const { event , key } = $event;
+
         const oldState = this.query.getValue();
         const newState = {
           ...oldState ,
-          [key]:$event
+          [key]: event
         }
         this.query.next(newState)
       }

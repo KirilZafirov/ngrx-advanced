@@ -18,8 +18,7 @@ export class AppComponent {
   user$: Observable<User | null>;
   links = [
     { path: "/home", icon: "home", label: "Store" },
-    { path: "/products", icon: "view_list", label: "Products" },
-   
+    { path: "/products", icon: "view_list", label: "Products" }, 
     { path: "/shop", icon: "shop", label: "Shop" }, 
     ];
 

@@ -20,7 +20,7 @@ export class LoginPageComponent {
   error$: Observable<string | null>;
 
   constructor(private store: Store<State>) { 
-    this.user$ = store.select(selectAuthUser);
+    this.user$ = store.select(selectAuthUser)
     this.error$ = store.select(selectAuthError);
   }
 

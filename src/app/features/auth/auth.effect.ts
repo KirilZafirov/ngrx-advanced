@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../core/services/auth.service';
 import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from '@ngrx/effects';
@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
-    constructor(private actions$: Actions, private auth: AuthService , private router: Router) { }
+    constructor(private actions$: Actions, private auth: AuthService , private router: Router ,  private route: ActivatedRoute,) { }
 
     getAuthStatus$ = createEffect(() =>
         this.auth
@@ -28,7 +28,8 @@ export class AuthEffects {
             concatMap(action => {
                 return this.auth.login(action.username, action.password).pipe(
                     map(user => {
-                        this.router.navigateByUrl('');
+                        const returnUrl = this.route.snapshot.queryParams['redirectUrl'] || '/';
+                        this.router.navigateByUrl(returnUrl);
                         return AuthApiActions.loginSuccess(user)
                     }),
                     catchError(reason => of(AuthApiActions.loginFailure(reason)))

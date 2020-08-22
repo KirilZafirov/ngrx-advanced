@@ -17,6 +17,10 @@ export class LoginFormComponent {
     password: new FormControl("")
   });
 
+  hide = true;
+  get username() { return this.formGroup.get('username'); }
+  get passwordInput() { return this.formGroup.get('password'); }  
+
   onSubmit() {
     this.login.emit(this.formGroup.value);
   }

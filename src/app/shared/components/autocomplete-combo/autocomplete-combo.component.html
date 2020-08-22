@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="gradient">
+    <div class="row">
+      <ng-container *ngFor="let autoCompleteItem of searchesCombo">
+        <div class="col-md-4">
+          <app-autocomplete [label]="autoCompleteItem.label" 
+            [placeholder]="autoCompleteItem.placeholder"
+            [filteredOptions]="autoCompleteItem.allOptions"
+            (filterParams)="OnfilterParams( $event , autoCompleteItem.key)"
+            (changeParams)="OnchangeParams( $event , autoCompleteItem.key)">
+          </app-autocomplete>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div> 

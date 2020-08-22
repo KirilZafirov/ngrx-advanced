@@ -379,7 +379,7 @@ mat-toolbar {
   font-size: 20px;
 }
 .mat-form-field {
-  width: 100%;
+  // width: 100%;
 }
 * {
   -webkit-font-smoothing: antialiased;
@@ -426,8 +426,8 @@ mat-card {
 }
 
 .active-link-menu {
-  background-color: #fff !important;
-  color: $dark-text !important;
+  // background-color: #fff !important;
+  // color: $dark-text !important;
   span {
     span {
       text-decoration: underline;

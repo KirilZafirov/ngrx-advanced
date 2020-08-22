@@ -1,3 +1,4 @@
+import { AutocompleteComboComponent } from './components/autocomplete-combo/autocomplete-combo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -22,6 +23,7 @@ const sharedComponents = [
   FormStorageDirective,
   ConfirmDialogComponent,
   AutocompleteComponent,
+  AutocompleteComboComponent,
   WithLoadingPipe,
   CurrencyComponent,
   ValidationErrorsPipe,

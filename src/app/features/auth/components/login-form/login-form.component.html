@@ -7,7 +7,7 @@
         placeholder="Username"
         type="text"
         formControlName="username"
-      />
+      /> 
     </mat-form-field>
     <mat-form-field>
       <input
@@ -16,6 +16,7 @@
         type="password"
         formControlName="password"
       />
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
     </mat-form-field>
     <div class="formActions">
       <button mat-raised-button color="accent" type="submit">

@@ -1,16 +1,16 @@
 <mat-toolbar color="primary" class="mat-elevation-z8 container-padding"> 
   <ng-container *ngFor="let link of links">
     <button mat-button [routerLink]="link.path" routerLinkActive="active-link-menu">
-      <mat-icon> {{link.icon}}</mat-icon>
+      <!-- <mat-icon> {{link.icon}}</mat-icon> -->
       <span>{{link.label}}</span>
     </button>
   </ng-container>
   <span class="nav-spacer"></span>
   <ng-container *ngIf="user$ | async as user; else guest">
     <button mat-button [routerLink]="'/user'" routerLinkActive="active-link-menu">
-      <mat-icon>person</mat-icon>
+      <!-- <mat-icon>person</mat-icon> -->
       <span>{{user.username}}</span>
-    </button>
+    </button> 
   </ng-container>
   <ng-template #guest>
     <button mat-button [routerLink]="'/user'" routerLinkActive="active-link-menu">
@@ -22,25 +22,23 @@
 <ng-container *ngIf="viewService.viewPortSizes$ | async as viewPortSizes">
   <mat-toolbar color="accent" *ngIf="viewPortSizes.isSmall || viewPortSizes.isXSmall">
     <button (click)="menu.toggle()" mat-icon-button>
-      <mat-icon>menu</mat-icon>
+      <!-- <mat-icon>menu</mat-icon> -->
     </button>
   </mat-toolbar> 
-</ng-container>
-
-
+</ng-container> 
 <mat-sidenav-container>
   <mat-sidenav #menu role="menu items" position="start">
     <mat-toolbar>
       Links
       <span class="nav-spacer"></span>
       <button mat-icon-button (click)="menu.close()" matTooltip="Close sidenav" matTooltipClass="custom-tooltip" matTooltipPosition="right">
-        <mat-icon>keyboard_arrow_left</mat-icon>
+        <!-- <mat-icon>keyboard_arrow_left</mat-icon> -->
       </button>
     </mat-toolbar>
     <mat-nav-list>
       <ng-container *ngFor="let link of links ; last as last">
         <a mat-list-item [routerLink]="link.path" routerLinkActive="active-link-item">
-          <mat-icon> {{link.icon}}</mat-icon>
+          <!-- <mat-icon> {{link.icon}}</mat-icon> -->
           <h3 matLine> {{link.label}}</h3>
           <!-- <p matLine>The demo itself</p> -->
           <mat-divider [inset]="true" *ngIf="!last"></mat-divider>

@@ -1,5 +1,4 @@
-<mat-sidenav-container>
-  <div class="landing-page">
+<mat-sidenav-container> 
     <div class="row">
       <div class="col-md-11"> 
       </div>
@@ -11,22 +10,44 @@
         </mat-toolbar>
       </div> 
     </div>
-    <div class="row justify-content-md-center">
-      <div class="col-md-auto gradient">
-        <div class="row align-items-center">
-          <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
-            <div class="col-md-6">
-              <app-autocomplete [label]="autoCompleteItem.label" 
-                [placeholder]="autoCompleteItem.placeholder"
-                [filteredOptions]="autoCompleteItem.allOptions"
-                (filterParams)="filterParams( $event , autoCompleteItem.key)"
-                (changeParams)="changeParams( $event , autoCompleteItem.key)"></app-autocomplete>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </div>
+    <mat-tab-group mat-align-tabs="center"  animationDuration="500ms" dynamicHeight mat-stretch-tabs>
+      <mat-tab>
+        <!-- #docregion label-directive -->
+            <ng-template mat-tab-label>
+              <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+              First
+            </ng-template>
+        <!-- #enddocregion label-directive -->
+        <ng-template matTabContent>
+          <app-autocomplete-combo [searchesCombo]="autoCompleteSearches"
+                                  (filterParams)="filterParams( $event)"
+                                  (changeParams)="changeParams( $event)"> 
+          </app-autocomplete-combo> 
+        </ng-template>
+      </mat-tab>
+      <mat-tab >
+                <!-- #docregion label-directive -->
+                <ng-template mat-tab-label>
+                  <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+                  Second
+                </ng-template>
+            <!-- #enddocregion label-directive -->
+        <ng-template matTabContent>
+          Content 1
+        </ng-template>
+      </mat-tab>
+      <mat-tab >
+                <!-- #docregion label-directive -->
+                <ng-template mat-tab-label>
+                  <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+                  Third
+                </ng-template>
+            <!-- #enddocregion label-directive -->
+        <ng-template matTabContent>
+          Content 1
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group> 
   <mat-toolbar>
     <button mat-icon-button type="button" color="primary">
       <mat-icon>search</mat-icon>
@@ -47,23 +68,11 @@
       </button>
 
     </div>
-    <mat-nav-list>
-      <form class="example-form">
-        <mat-form-field>
-          <mat-label>Search</mat-label>
-          <mat-icon matPrefix>search</mat-icon>
-          <input type="text" matInput #message maxlength="256" placeholder="I am searching for...">
-          <mat-hint align="start"><strong>Car , Model , Producer , Year</strong> </mat-hint>
-          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-        </mat-form-field>
-      </form>
-      <ng-container *ngFor="let autoCompleteItem of autoCompleteSearches">
-        <app-autocomplete [label]="autoCompleteItem.label" [placeholder]="autoCompleteItem.placeholder"
-          [filteredOptions]="autoCompleteItem.allOptions" 
-          (filterParams)="filterParams( $event , autoCompleteItem.key)"
-          (changeParams)="changeParams( $event , autoCompleteItem.key)">
-        </app-autocomplete>
-      </ng-container>
+    <mat-nav-list> 
+      <app-autocomplete-combo [searchesCombo]="autoCompleteSearches"
+      (filterParams)="filterParams( $event)"
+      (changeParams)="changeParams( $event)"> 
+      </app-autocomplete-combo>
       <mat-divider></mat-divider>
     </mat-nav-list>
   </mat-sidenav>
