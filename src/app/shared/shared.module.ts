@@ -1,3 +1,4 @@
+import { LazyImgDirective } from './directives/lazy-img.directive';
 import { AutocompleteComboComponent } from './components/autocomplete-combo/autocomplete-combo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +29,8 @@ const sharedComponents = [
   CurrencyComponent,
   ValidationErrorsPipe,
   TelInputComponent,
-  TextInputComponent];
+  TextInputComponent,
+  LazyImgDirective];
 
 
 @NgModule({
