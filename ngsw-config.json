@@ -22,12 +22,13 @@
       "resources": {
         "files": [
           "/assets/**",
+          "!/assets/material-design-icons/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
     },
     {
-      "name":"externals",
+      "name":"fonts",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
@@ -36,6 +37,15 @@
           "https://fonts.gstatic.com/**"
         ]
       } 
+    },
+    {
+      "name": "icon-fonts",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/material-design-icons/**"
+        ]
+      }
     },
     {
       "name":"images",
@@ -58,8 +68,30 @@
         "strategy": "freshness",
         "maxSize": 100,
         "maxAge": "1h",
-        "timeout": "5s"
+        "timeout": "25s"
+      }
+    },
+    {
+      "name": "api-performance",
+      "urls": [
+        "/products"
+      ],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "3d",
+        "timeout": "10s",
+        "strategy": "performance"
       }
     }
+  ],
+  "appData": {
+    "versionMessage": "New version: Push notifications were added!"
+  },
+  "navigationUrls": [
+    "/**",
+    "!/**/*.*",
+    "!/**/*__*",
+    "!/**/*__*/**",
+    "!/**/non-cached-route"
   ]
 }
