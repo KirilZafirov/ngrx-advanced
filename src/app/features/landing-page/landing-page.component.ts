@@ -92,4 +92,8 @@ export class LandingPageComponent implements OnDestroy {
         this.query.next(newState)
       }
     }
+
+    prefetch(event) {
+      console.log(event)
+    }
 }

@@ -1,3 +1,4 @@
+import { PrefetchDirective } from './directives/prefetch.directive';
 import { BlueValidatorDirective } from './validators/custom-color-validators/blue-validator.directive';
 import { LazyImgDirective } from './directives/lazy-img.directive';
 import { AutocompleteComboComponent } from './components/autocomplete-combo/autocomplete-combo.component';
@@ -32,7 +33,8 @@ const sharedComponents = [
   TelInputComponent,
   TextInputComponent,
   LazyImgDirective,
-  BlueValidatorDirective];
+  BlueValidatorDirective,
+  PrefetchDirective];
 
 
 @NgModule({

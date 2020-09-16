@@ -33,7 +33,16 @@
                 </ng-template>
             <!-- #enddocregion label-directive -->
         <ng-template matTabContent>
-          Content 1
+          <h3>Top Heroes</h3>
+          <div class="grid grid-pad">
+            <a 
+              class="col-1-4"
+              (prefetch)="prefetch($event)"
+              [prefetchMode]="['hover']"
+            >
+              Test
+            </a>
+          </div>
         </ng-template>
       </mat-tab>
       <mat-tab >

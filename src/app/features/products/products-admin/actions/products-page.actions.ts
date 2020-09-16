@@ -11,6 +11,10 @@ export const selectProduct = createAction(
     "[Products Page] Select Product",
     props<{productId: string , productDetailsLoading: true}>()
 );
+export const hoverProduct = createAction(
+    "[Products Page] Hover over Product do some prefetching",
+    props<{productId: string , productDetailsLoading: true}>()
+);
 
 export const clearSelectedProduct = createAction(
     '[Products Page] Clear Selected Product'

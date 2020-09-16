@@ -2,14 +2,18 @@
 import { Injectable } from "@angular/core";
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import { ProductsService } from '../services/products-data.service';
-import { exhaustMap, map, mergeMap, concatMap, tap} from 'rxjs/operators';
+import { exhaustMap, map, mergeMap, concatMap, tap, withLatestFrom, filter} from 'rxjs/operators';
 import { ProductsPageActions, ProductsApiActions } from './actions';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
+import * as fromRoot from "src/app/shared/state";
 
 @Injectable()
 export class ProductsAdminEffects {
  
     constructor(private productsService: ProductsService, 
+         private store: Store<fromRoot.State>,
         private router: Router,
         private actions$: Actions) {
         }
@@ -27,12 +31,22 @@ export class ProductsAdminEffects {
 
     @Effect()
     loadProduct$ = this.actions$.pipe(
-      ofType(ProductsPageActions.selectProduct),
-      exhaustMap((action) =>
-        this.productsService.getDataById(action.productId).pipe(
-          map(product => ProductsApiActions.productLoaded({ product })),
-        //   catchError(() => EMPTY)
-        )
+      ofType(ProductsPageActions.selectProduct , ProductsPageActions.hoverProduct),
+      concatMap((action) =>
+        of(action).pipe(
+          withLatestFrom(this.store.select(fromRoot.selectProductDetails)),
+        ),
+      ),
+      filter(([_action, detail]) => { 
+        return Boolean(detail) === false || (_action.productId !== detail.id)
+      }),
+      mergeMap(([action]) => { 
+       return  this.productsService.getDataById(action.productId).pipe(
+        map(product => ProductsApiActions.productLoaded({ product })),
+      //   catchError(() => EMPTY)
+      )
+      }
+       
       )
     );
 
