@@ -2,19 +2,20 @@
     <table class="table table-hover">
       <thead>
         <tr> 
-          <th scope="col">Name</th>
-          <th scope="col">Price</th>
-          <th scope="col">Description</th>
+          <th scope="col" resizable>Name</th>
+          <th scope="col" resizable>Price</th>
+          <th scope="col" resizable>Description</th>
           <th scope="col" class="btn-action">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let product of products" [ngClass]="activeProductId === product.id ? 'table-active' : ''"> 
-          <td class="align-middle">{{product.name}}</td>
-          <td class="align-middle"> 
+          <td class="align-middle" resizable>{{product.name}}</td>
+          <td class="align-middle" resizable> 
             <app-currency [amount]="product.price"
                           [currencySign]="product.currencyType">
-            </app-currency></td>
+            </app-currency>
+          </td>
           <td class="align-middle">{{product.description}}</td>
           <td class="align-middle btn-action">  
               <mat-icon  color="accent" (click)="select(product.id)">edit</mat-icon>

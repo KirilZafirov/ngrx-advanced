@@ -1,3 +1,5 @@
+import { ResizableComponent } from './components/resizable/resizable.component';
+import { ResizableDirective } from './components/resizable/resizable.directive';
 import { PrefetchDirective } from './directives/prefetch.directive';
 import { BlueValidatorDirective } from './validators/custom-color-validators/blue-validator.directive';
 import { LazyImgDirective } from './directives/lazy-img.directive';
@@ -34,7 +36,10 @@ const sharedComponents = [
   TextInputComponent,
   LazyImgDirective,
   BlueValidatorDirective,
-  PrefetchDirective];
+  PrefetchDirective,
+  ResizableDirective,
+  ResizableComponent
+];
 
 
 @NgModule({
