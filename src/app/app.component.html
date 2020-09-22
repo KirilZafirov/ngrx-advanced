@@ -5,7 +5,8 @@
       <span>{{link.label}}</span>
     </button>
   </ng-container>
-  <span class="nav-spacer"></span>
+  <span class="nav-spacer"></span> 
+  
   <ng-container *ngIf="user$ | async as user; else guest">
     <button mat-button [routerLink]="'/user'" routerLinkActive="active-link-menu">
       <!-- <mat-icon>person</mat-icon> -->

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
+import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink'; 
 
 const routerOptions: ExtraOptions = {
-  // enableTracing: true,
+  enableTracing: true,
   useHash: false,
   scrollPositionRestoration: 'enabled',
   anchorScrolling: 'enabled',
@@ -38,8 +38,7 @@ const routes: Routes = [
     },
     {
       path: 'user',
-      loadChildren:() =>import('./features/user-settings/user-settings.module').then(m => m.UserSettingsModule) ,
-      pathMatch: 'full',
+      loadChildren:() =>import('./features/user-settings/user-settings.module').then(m => m.UserSettingsModule),
     },
     {
       path: 'home',
