@@ -8,9 +8,8 @@
     "server": "json-server db.json --watch",
     "start:prod": "npx serve -s ./dist/ngxr-advanced/browser",
     "start:prod:db": "concurrently \"npm run server\" \"npm run start:prod\"",
-
-    "http:server":"npx http-server -p 8080 ./dist/ngxr-advanced",
-    "http:server:db":"concurrently \"npm run server\" \"npm run http:server\"",
+    "http:server": "npx http-server -p 8080 ./dist/ngxr-advanced",
+    "http:server:db": "concurrently \"npm run server\" \"npm run http:server\"",
     "generate:universal": "ng generate",
     "build": "ng build ngxr-advanced --prod",
     "dev:ssr": "ng run ngxr-advanced:serve-ssr",
@@ -53,7 +52,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.6",
+    "@angular-devkit/build-angular": "^0.1100.1",
     "@angular/cli": "~10.0.6",
     "@angular/compiler-cli": "~10.0.9",
     "@angular/language-service": "~10.0.9",
