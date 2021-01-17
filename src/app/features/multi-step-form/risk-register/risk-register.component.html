@@ -1,0 +1,10 @@
+
+<ng-container *ngFor="let riskGroup of riskFormArray.controls; let i=index">
+  <form [formGroup]="riskGroup">
+    <router-outlet></router-outlet>
+  </form>
+  <button (click)="editRisk(i)">Edit Risk</button>
+  <button (click)="removeRisk(i)">Remove Risk</button>
+  <button (click)="riskDetails(i)">Risk Details</button>
+</ng-container>
+<button (click)="addRisk()">Add Risk</button>

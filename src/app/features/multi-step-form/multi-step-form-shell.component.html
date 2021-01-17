@@ -1,0 +1,61 @@
+<div class="stepper">
+  <ul>
+    <li>
+      <button routerLink="operation-plan">Operation Plan</button>
+    </li>
+    <li>
+      <button routerLink="project-charter">Project Charter</button>
+      <ul>
+        <li>
+          <button routerLink="project-charter/overview">Project Overview</button>
+        </li>
+        <li>
+          <button routerLink="project-charter/team">Project Team</button>
+        </li>
+        <li>
+          <button routerLink="project-charter/duration">Project Duration</button>
+        </li>
+        <li>
+          <button routerLink="project-charter/milestones">Project Milestones</button>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button routerLink="roles-and-responsibilities">Roles  And Responsibilities</button>
+    </li>
+    <li>
+      <button routerLink="risk-register">risk-register</button>
+      <ul>
+        <li>
+          <button routerLink="risk-register/step-one">Step One</button>
+        </li>
+        <li>
+          <button routerLink="risk-register/step-two">Step Two</button>
+        </li>
+        <li>
+          <button routerLink="risk-register/step-three">Step Three</button>
+        </li>
+        <li>
+          <button routerLink="risk-register/step-four">Step Four</button>
+        </li>
+        <li>
+          <button routerLink="risk-register/step-five">Step Five</button>
+        </li>
+        <li>
+          <button routerLink="risk-register/step-six">Step Six</button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="content">
+  <form [formGroup]="mainForm" (ngSubmit)="save()">
+    <router-outlet></router-outlet>
+    <button type="submit">SAVE FORM</button>
+  </form>
+  <!-- <div class="form-ui form-value">
+    <h4>Current Form Value</h4>
+    <pre [innerHTML]="mainForm.value"></pre>
+    <h4>Form Validity: {{mainForm.valid}}</h4>
+  </div> -->
+</div>

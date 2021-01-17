@@ -4,7 +4,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 
 const routerOptions: ExtraOptions = {
-  enableTracing: true,
+  // enableTracing: true,
   useHash: false,
   scrollPositionRestoration: 'enabled',
   anchorScrolling: 'enabled',
@@ -27,6 +27,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/details-page/details-page.module').then(
         (m) => m.DetailsPageModule
+      ),
+    canActivate: [],
+  },
+  {
+    path: 'multi-step-form',
+    loadChildren: () =>
+      import('./features/multi-step-form/multi-step-form.module').then(
+        (m) => m.MultiStepFormModule
       ),
     canActivate: [],
   },
