@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 
-import { ValidationErrorsPipe } from './pipes/validation-errors.pipe'; 
+import { ValidationErrorsPipe } from './pipes/validation-errors.pipe';
 import { ValidationMessages } from './services/validation-messages.service';
 import { CurrencyComponent } from './components/currency/currency.component';
 import { WithLoadingPipe } from './pipes/with-loading.pipe';
@@ -22,6 +22,7 @@ import { UserComponent } from './components/user/user.component';
 import { MaterialModule } from './material.module';
 import { TelInputComponent } from './custom-form/tel-input/tel-input.component';
 import { TextInputComponent } from './custom-form/text-input/text-input.component';
+import { DragDropDirective } from './directives/drag-drop.directive';
 
 const sharedComponents = [
   UserComponent,
@@ -38,7 +39,8 @@ const sharedComponents = [
   BlueValidatorDirective,
   PrefetchDirective,
   ResizableDirective,
-  ResizableComponent
+  ResizableComponent,
+  DragDropDirective
 ];
 
 

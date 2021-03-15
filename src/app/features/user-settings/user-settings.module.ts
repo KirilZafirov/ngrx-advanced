@@ -10,7 +10,7 @@ import { TestComponent } from './routed-dialog/test.component';
 @NgModule({
   imports: [
     SharedModule,
-    UserSettingsRoutingModule
+    UserSettingsRoutingModule,
   ],
   declarations: [
     UserSettingsComponent,
