@@ -4,7 +4,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 
 const routerOptions: ExtraOptions = {
-  // enableTracing: true,
+  enableTracing: true,
   useHash: false,
   scrollPositionRestoration: 'enabled',
   anchorScrolling: 'enabled',
