@@ -30,8 +30,8 @@
               "src/robots.txt"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -99,14 +99,14 @@
               "src/robots.txt"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
             "tsConfig": [
               "tsconfig.app.json",
@@ -197,6 +197,7 @@
   },
   "defaultProject": "ngxr-advanced",
   "cli": {
-    "analytics": "f14dfd9e-0ca2-477e-af23-7ca2bb231548"
+    "analytics": "f14dfd9e-0ca2-477e-af23-7ca2bb231548",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
