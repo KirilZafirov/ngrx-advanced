@@ -22,7 +22,7 @@
     "e2e": "ng e2e",
     "pretty-quick": "pretty-quick",
     "pre-commit": "pretty-quick --staged",
-    "prepare": "husky add .husky/pre-commit \"npm run pre-commit\""
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
