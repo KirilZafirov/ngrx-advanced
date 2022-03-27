@@ -28,7 +28,7 @@
       }
     },
     {
-      "name":"fonts",
+      "name": "fonts",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
@@ -36,46 +36,38 @@
           "https://fonts.googleapis.com/**",
           "https://fonts.gstatic.com/**"
         ]
-      } 
+      }
     },
     {
       "name": "icon-fonts",
       "installMode": "prefetch",
       "resources": {
-        "files": [
-          "/assets/material-design-icons/**"
-        ]
+        "files": ["/assets/material-design-icons/**"]
       }
     },
     {
-      "name":"images",
+      "name": "images",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
-        "urls": [
-          "https://material.angular.io/assets/img/examples/**"
-        ]
-      } 
+        "urls": ["https://material.angular.io/assets/img/examples/**"]
+      }
     }
   ],
   "dataGroups": [
     {
-      "name": "rest-api", 
-      "urls": [
-        "http://localhost:3000/**"
-      ],
+      "name": "rest-api",
+      "urls": ["http://localhost:3000/**"],
       "cacheConfig": {
         "strategy": "freshness",
-        "maxSize": 100,
+        "maxSize": 10,
         "maxAge": "1h",
         "timeout": "25s"
       }
     },
     {
       "name": "api-performance",
-      "urls": [
-        "/products"
-      ],
+      "urls": ["/products"],
       "cacheConfig": {
         "maxSize": 100,
         "maxAge": "3d",
